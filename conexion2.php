@@ -21,14 +21,13 @@ function consultaHorarios($conexion){
 			if (intval($hora)<intval(date("His")) $turno="T1";  
 	 		*/
 
-
 			//algo para separar por dia
 			// mañana			
 			$acu=$acu+1;
 	 		$la="layer".$acu."";
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
-	 		if($hora<=115959){
+	 		if($hora<=115959 ){
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
@@ -45,8 +44,7 @@ function consultaHorarios($conexion){
                     <p></p>
                   </div> 
                   </div>
-              </li> 
-	 			';
+              </li> ';
 	 		}
 	 		else{
 	 			// tarde 
