@@ -1,79 +1,66 @@
 <?php
 include("conexion2.php");
-   $contenido="";   
+   $contenido="";  
     if($statusConexion==true){
-      $contenido=consultaProgramas($conex);    
+      $contenido=consultaCategoria($conex);    
   }
 ?>    
     <section class="content-header">
       <h1>
-       Programas
+       Categorias
       </h1>
       <ol class="breadcrumb">
         <li><a><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a>Programas</a></li>        
+        <li><a>Categorias</a></li>        
       </ol>
     </section>
     <!-- Main content -->    
-    <div id="div_frm">
-          <form id="frm_programa" name="frm_programa" action="" method="post">
-            <fieldset>
-              <label>Nombre del Programa</label>            
-              <input type="text" id="nombre" name="nombre" placeholder="nombre del programa" required />
-            </fieldset>
-            <fieldset id="btn">
-              <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
-            </fieldset>
-            <fieldset id="loader">
-              <span>Espere un momento</span>
-              <img src="dist/img/loader.gif">
-            </fieldset>
-          </form>            
-    </div>
-    <div id="div_frm2">
-          <form id="frm_edit_progra" action="" method="post">
+    <div id="div_frm_c">
+          <form id="frm_categoria" name="frm_categoria" action="" method="post">
             <fieldset>
               <label>ID</label>
               <br>
-              <input type="text" id="id_programa" name="id_programa" placeholder="ID" readonly/>
-              <br>
-              <label>Nombre del Programa</label>
-              <br>
-              <input type="text" id="nombre" name="nombre" placeholder="Nombre del programa" required/>
-              <br>
-              <label>Descripcion</label>
-              <br>
-              <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion" required/>
-              <br>
-              <label>Correo</label><br>   
-              <input type="text" id="correo" name="correo" placeholder="Correo" required />
-              <br>
-              <label>Estatus</label><br>         
-              <select name="estatus" id="estatus" required >
-                    <option value="">Seleccione un Estatus</option>
-                    <option value="ACTIVO">Activo</option>
-                    <option value="INACTIVO">Inactivo</option>                    
-              </select>
+              <input type="text" id="id_categoria" name="id_categoria" placeholder="ID" readonly/>
+              <label>Nombre de la categoria</label>          
+              <input type="text" id="nombre" name="nombre" placeholder="nombre de la categoria" required />
             </fieldset>
-            <fieldset id="btn2">
+            <fieldset id="btn_c">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
             </fieldset>
-            <fieldset id="loader2">
+            <fieldset id="loader_c">
               <span>Espere un momento</span>
               <img src="dist/img/loader.gif">
             </fieldset>
           </form>            
-    </div>
+    </div> 
+    <div id="div_frm_c2">
+          <form id="frm_categoria_edit" action="" method="post">
+            <fieldset>
+              <label>ID</label>
+              <br>
+              <input type="text" id="id_categoria" name="id_categoria" placeholder="ID" readonly/>
+              <label>Nombre de la categoria</label>            
+              <input type="text" id="nombre" name="nombre" placeholder="nombre de la categoria" required />
+            </fieldset>
+            <fieldset id="btn_c">
+              <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
+            </fieldset>
+            <fieldset id="loader_c">
+              <span>Espere un momento</span>
+              <img src="dist/img/loader.gif">
+            </fieldset>
+          </form>            
+    </div>    
     <section class="content">                                  
           <div class="col-xs-9">
             <div>
-              <button id="agregar" class="btn btn-primary btn-md ">Agregar</button>
+              <button id="agregar_c" class="btn btn-primary btn-md ">Agregar</button>
             </div>
           </div>        
           <div class="col-xs-12"> 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Programas</h3>
+              <h3 class="box-title">Lista de categorias</h3>
               <!--
                <div class="box-tools">
                 <ul class="pagination pagination-sm no-margin pull-right">
@@ -90,14 +77,11 @@ include("conexion2.php");
                 <thead>
                   <tr>
                       <th>ID</th>                    
-                      <th>Nombre</th>                      
-                      <th>Descripcion</th>
-                      <th>Correo</th>
-                      <th>Estatus</th>              
+                      <th>Nombre</th>                                                        
                       <th>Acciones</th> 
                   </tr>  
                 </thead>              
-                <tbody id="lis_programas">
+                <tbody id="lis_categorias">
                 <?php echo $contenido ?>               
                 </tbody>
               </table>
@@ -109,4 +93,4 @@ include("conexion2.php");
         <!-- /.col -->                                    
     </section>        
     <!-- /.content -->          
-    <script type="text/javascript" src="dist/js/program.js"></script>
+    <script type="text/javascript" src="dist/js/categoria.js"></script>

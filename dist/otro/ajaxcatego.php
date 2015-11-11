@@ -10,15 +10,14 @@ if($statusConexion){
 		switch ($_POST['Op']) {
 				case 'nuevo':
 						$consulta=mysql_query("
-							insert into programas
-							(nombre,estatus) 
+							insert into categoria
+							(categoria) 
 							values(
-							'".$_POST['nombre']."',
-							'ACTIVO')"
+							'".$_POST['nombre']."')"
 							,$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Insertado";
-							$ContenidoHTML=consultaProgramas($conex);					
+							$ContenidoHTML=consultaCategoria($conex);					
 						}
 						else{
 							$respuesta="BAD";
@@ -27,16 +26,13 @@ if($statusConexion){
 					break;
 				case 'editar':
 						$consulta=mysql_query("
-							update programas set
-							nombre='".$_POST['nombre']."',
-							estatus='".$_POST['estatus']."',
-							descripcion='".$_POST['descripcion']."',
-							correo='".$_POST['correo']."'
-							where id_programa=".$_POST['id_programa']
+							update categoria set
+							categoria='".$_POST['nombre']."'							
+							where id_categoria=".$_POST['id_categoria']
 							,$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Actualizado";
-							$ContenidoHTML=consultaProgramas($conex);					
+							$ContenidoHTML=consultaCategoria($conex);					
 						}
 						else{
 							$respuesta="BAD";
@@ -44,11 +40,11 @@ if($statusConexion){
 						}
 					break;			
 				case 'eliminar':
-						$consulta=mysql_query("delete from programas 
-							where id_programa=".$_POST['id_programa'],$conex);
+						$consulta=mysql_query("delete from categoria 
+							where id_categoria=".$_POST['id_categoria'],$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Eliminado";
-							$ContenidoHTML=consultaProgramas($conex);	
+							$ContenidoHTML=consultaCategoria($conex);	
 						}
 						else{
 							$respuesta="BAD";

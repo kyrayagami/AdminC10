@@ -5,9 +5,18 @@ include('conexion2.php');
  if($statusConexion==true){
   $con_horario= consultaHorarios($conex);
  }
- 
+ error_reporting(0);
 ?>
 
+    <section class="content-header">
+      <h1>
+       Programas
+      </h1>
+      <ol class="breadcrumb">
+        <li><a><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a>Programas</a></li>        
+      </ol>
+    </section>
 <!-- Main content -->
     <section class="content">    
       <div class="row">
@@ -37,7 +46,7 @@ include('conexion2.php');
         <div class="col-xs-9"> 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Horarios</h3>
+              <h3 class="box-title">Parrilla de Horarios</h3>
                <div class="box-tools">            
               </div>
             </div>        

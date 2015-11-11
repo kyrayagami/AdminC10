@@ -40,7 +40,7 @@ $(function(){
 	$('#loader2').hide();
 	$('#frm_programa').on('submit',function(){		
 		var datos=$(this).serialize();
-		//alert(""+datos);
+		alert(""+datos);
 		$.ajax({
 			type:'POST',
 			dataType:"json",

@@ -7,10 +7,10 @@ function consultaHorarios($conexion){
 	$T='';
 	$N='';
 	$consulta=mysql_query("SELECT * 
-		FROM horario_prueba, programas_prueba
-		WHERE programas_prueba.estatus =  'ACTIVO'
-		AND programas_prueba.id_programa = horario_prueba.id_programa
-		ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC
 		");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -108,7 +108,7 @@ function consultaProgramas($conexion){
 	//$consulta=mysql_query('select id,nombre,edad,telefono,ciudad,status from user');
 	//$consulta = mysql_query('SELECT conductores.*, conductores_imagenes.*, imagenes.* FROM conductores, conductores_imagenes, imagenes WHERE conductores.id_conductor = conductores_imagenes.id_conductor and imagenes.id_imagen = conductores_imagenes.id_imagen ORDER BY conductor');
 	//$consulta = "SELECT programas.*, categoria.*, productores.* FROM programas, categoria, productores WHERE programas.id_categoria = categoria.id_categoria and productores.id_productor = programas.id_productor order by programas.nombre";
-	$consulta = mysql_query("select * from programas_prueba");
+	$consulta = mysql_query("select * from programas");
 	//$conductores = mysql_query($sql, $conexion) or die(mysql_error());  
 	 //Validamos si hay o no registros
 	 if(mysql_num_rows($consulta)>0){
@@ -130,12 +130,36 @@ function consultaProgramas($conexion){
 	 {
 		 $salida='
 		 	<tr id="sinDatos">
-				<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+				<td colspan="7">No hay Registros en la Base de Datos</td>
 			</tr>
 		 ';
 	 }
 	 return $salida;
 }
+function consultaCategoria($conexion){
+	$salida='';
+	$consulta= mysql_query("select * from categoria");
+	if(mysql_num_rows($consulta)>0){
+		while($dato=mysql_fetch_array($consulta)){
+			$salida.='
+				<tr>			 	
+					<td>'.$dato["id_categoria"].'</td>
+					<td>'.$dato["categoria"].'</td>					
+					<td><a class="btn btn-info">Editar</a>
+					<a class="btn btn-danger">Eliminar</a></td>
+				</tr>
+			';
+		}
+	}else{
+		$salida='
+		<tr id="sinDatos">
+				<td colspan="7">No hay Registros en la Base de Datos</td>
+			</tr>
+		';
+	}
+	return $salida;
+}
+
 function returnStatus($palabra){
 	switch($palabra){
 		case "ACTIVO":
@@ -154,11 +178,11 @@ return $status;
 if(!$conex=mysql_connect('localhost','root','123456')){
 	$statusConexion=false;
 }
-if(!mysql_select_db('promovis_ion',$conex)){
+if(!mysql_select_db('promo_vision2',$conex)){
 	$statusConexion=false;
 }
 else{
 	mysql_query("set names 'utf-8'",$conex);
 }
-
+error_reporting(0);
 ?>

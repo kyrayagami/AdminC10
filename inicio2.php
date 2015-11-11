@@ -14,7 +14,7 @@ if($_POST)
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE  | Dashboard</title>
+  <title>AdminC10  | Dashboard</title>
 
   <!--inicio links de los horario para agregar a la siguiente-->
   <link rel="stylesheet" type="text/css" media="all" href="Archivos/jsDatePick_ltr.css">
@@ -72,6 +72,14 @@ if($_POST)
           } 
         });
       });
+      $('#btn_categoria').click(function(){
+        $.ajax({
+          url: 'categoria.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });      
     });
   </script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -97,9 +105,9 @@ if($_POST)
     <!-- Logo -->
     <a href="inicio.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>A</b>10</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Admin</b>C10</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
