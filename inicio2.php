@@ -66,12 +66,13 @@ if($_POST)
       });
       $('#btn_horario').click(function(){
         $.ajax({
-          url: 'horario_ajax.php',
+            url: 'horario_ajax.php',
           success: function(data) {
             $('#div_dinamico').html(data);
           } 
         });
       });
+      
       $('#btn_categoria').click(function(){
         $.ajax({
           url: 'categoria.php',
@@ -81,19 +82,8 @@ if($_POST)
         });
       });      
 
-      //agregado nuevo
- $('#btn_categoria').click(function(){
-        $.ajax({
-          url: 'categoria_ajax.php'
-      $('#btn_categoria').click(function(){
-        $.ajax({
-          url: 'categoria.php',
-          success: function(data) {
-            $('#div_dinamico').html(data);
-          } 
-        });
-      });
- $('#btn_conductor').click(function(){
+      //agregado nuevo      
+      $('#btn_conductor').click(function(){
         $.ajax({
           url: 'conductor_ajax.php',
           success: function(data) {
@@ -101,7 +91,7 @@ if($_POST)
           } 
         });
       });
- $('#btn_notas').click(function(){
+      $('#btn_notas').click(function(){
         $.ajax({
           url: 'notas_ajax.php',
           success: function(data) {
@@ -109,7 +99,7 @@ if($_POST)
           } 
         });
       });
- $('#btn_productor').click(function(){
+      $('#btn_productor').click(function(){
         $.ajax({
           url: 'productor_ajax.php',
           success: function(data) {
@@ -118,7 +108,7 @@ if($_POST)
         });
       });
 
-$('#btn_galeria').click(function(){
+      $('#btn_galeria').click(function(){
         $.ajax({
           url: 'galeria_ajax.php',
           success: function(data) {
@@ -127,7 +117,7 @@ $('#btn_galeria').click(function(){
         });
       });
 
-$('#btn_publicidad').click(function(){
+      $('#btn_publicidad').click(function(){
         $.ajax({
           url: 'publi_ajax.php',
           success: function(data) {
@@ -135,7 +125,7 @@ $('#btn_publicidad').click(function(){
           } 
         });
       });
-$('#btn_slide').click(function(){
+      $('#btn_slide').click(function(){
         $.ajax({
           url: 'slide_ajax.php',
           success: function(data) {
@@ -144,7 +134,7 @@ $('#btn_slide').click(function(){
         });
       });
 
-$('#btn_video').click(function(){
+      $('#btn_video').click(function(){
         $.ajax({
           url: 'video_ajax.php',
           success: function(data) {
@@ -313,33 +303,13 @@ $('#btn_video').click(function(){
         <li>
           <a id="boton_carga_horario" href="#">
           <span>Horarios_</span>
-        </li>
-        
-        <li class="treeview">          
-          <a href="#">
-            <i class="fa fa-eye"></i>
-            <span>Ver </span>
-            <i class="fa fa-angle-left pull-right"></i>          
-          </a>
-          
-          <ul class="treeview-menu">          
-            <li><a href="#"><i class="fa fa-circle-o"></i> Categorìas</a></li>
-            <li><a id="ver_conductores" ><i class="fa fa-circle-o"></i> Conductores</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Galeria</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Notas</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Productores</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Programas</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Publicidades</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Slides</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Videos</a></li>
-          </ul>
-          
-        </li>        
+        </li>                  
       </ul>      
     </section>    
   </aside>
   <!--  hast aqui llega el menu lateral izquierdo-->
 <!--modal -->
+<!--
   <div class="modal fade" id="Modalprogra" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -353,39 +323,13 @@ $('#btn_video').click(function(){
             <input name="nombre" id = "nombre" type="text" size="30" />                                  
         </div>        
         <div class="modal-footer">
-          <input type="submit" class="btn btn-success ">
-          <!--
-          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-          -->
+          <input type="submit" class="btn btn-success ">          
         </div>        
         </form>
       </div>
     </div>
   </div>
-
-
-  <div class="modal fade" id="Modalcatego" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Agregar nuevo Categoria</h3>
-        </div>
-        <form method="POST" enctype="multipart/form-data" action="" onSubmit="return validar(this);">
-        <div class="modal-body">
-            <p>Nombre(Categoria)</p>
-            <input name="nombre" id = "nombre" type="text" size="30" />
-        </div>
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-success ">
-          <!--
-          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-          -->
-        </div>        
-        </form>
-      </div>
-    </div>
-  </div>
+  -->  
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" name="div_dinamico" id="div_dinamico">
     <!-- Content Header (Page header) -->

@@ -1,5 +1,14 @@
 <?php
 $statusConexion=true;
+function consultHorarios2($conexion){
+
+}
+function obtenerProgramas($conexion){
+
+}
+function obtenerDias($conexion){
+	$sql=mysql_query("select * from programas where estatus='ACTIVO'");
+}
 function consultaHorarios($conexion){
 	$acu=0;
 	$salida='';
@@ -88,7 +97,7 @@ function consultaHorarios($conexion){
               </li> 
 	 			';
 	 				}
-	 		}	 		
+	 		}
 	 		// <li class="estilo_lista" onclick="show('.$la.')">
 	 		//$salida = array("hola soy","");	
 		}		
@@ -119,7 +128,8 @@ function consultaProgramas($conexion){
 					<td>'.$dato["nombre"].'</td>					
 					<td>'.$dato["descripcion"].'</td>
 					<td>'.$dato["correo"].'</td>
-					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
+					<td> <span class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'
+					</span></td>
 					<td><a class="btn btn-info">Editar</a>
 					<a class="btn btn-danger">Eliminar</a></td>
 				</tr>
@@ -163,10 +173,12 @@ function consultaCategoria($conexion){
 function returnStatus($palabra){
 	switch($palabra){
 		case "ACTIVO":
-			$status="btn-success";
+			//$status="btn-success";
+			$status="label label-success";
 		break;
 		case "INACTIVO":
-			$status="btn-warning";
+			//$status="btn-warning";
+			$status="label label-warning";
 		break;
 		/*
 		case "Cancelado":
