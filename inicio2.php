@@ -80,6 +80,80 @@ if($_POST)
           } 
         });
       });      
+
+      //agregado nuevo
+ $('#btn_categoria').click(function(){
+        $.ajax({
+          url: 'categoria_ajax.php'
+      $('#btn_categoria').click(function(){
+        $.ajax({
+          url: 'categoria.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
+ $('#btn_conductor').click(function(){
+        $.ajax({
+          url: 'conductor_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
+ $('#btn_notas').click(function(){
+        $.ajax({
+          url: 'notas_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
+ $('#btn_productor').click(function(){
+        $.ajax({
+          url: 'productor_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
+
+$('#btn_galeria').click(function(){
+        $.ajax({
+          url: 'galeria_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
+
+$('#btn_publicidad').click(function(){
+        $.ajax({
+          url: 'publi_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
+$('#btn_slide').click(function(){
+        $.ajax({
+          url: 'slide_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
+
+$('#btn_video').click(function(){
+        $.ajax({
+          url: 'video_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
+//final del agregado
+
     });
   </script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
