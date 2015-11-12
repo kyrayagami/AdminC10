@@ -82,7 +82,7 @@ if($_POST)
         });
       });      
 
-      //agregado nuevo      
+//agregado nuevo      
       $('#btn_conductor').click(function(){
         $.ajax({
           url: 'conductor_ajax.php',
@@ -117,7 +117,7 @@ if($_POST)
         });
       });
 
-      $('#btn_publicidad').click(function(){
+      $('#btn_publi').click(function(){
         $.ajax({
           url: 'publi_ajax.php',
           success: function(data) {
@@ -274,7 +274,34 @@ if($_POST)
           <i class="fa fa-file"></i>
           <span>Notas</span>          
           </a>
-        </li>        
+        </li>  
+
+        <li>
+          <a id="btn_conductor" href="#"> 
+          <i class="fa fa-puzzle-piece"></i>
+          <span>Conductor</span>          
+          </a>
+        </li>    
+        <li>
+          <a id="btn_video" href="#"> 
+          <i class="fa fa-puzzle-piece"></i>
+          <span>Video</span>          
+          </a>
+        </li>
+        <li>
+          <a id="btn_publi" href="#"> 
+          <i class="fa fa-puzzle-piece"></i>
+          <span>Publicidad</span>          
+          </a>
+        </li>
+        <li>
+          <a id="btn_slide" href="#"> 
+          <i class="fa fa-puzzle-piece"></i>
+          <span>Slide</span>          
+          </a>
+        </li>
+
+
         <li>
           <a id="btn_productor" href="#"> 
           <i class="fa fa-user"></i>
