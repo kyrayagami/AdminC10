@@ -2,20 +2,11 @@
 include('conexion2.php');
  $con_horario="";
  if($statusConexion==true){
-  $con_horario= consultaHorarios($conex);
+  $con_horario= consulta_lunes($conex);
  }
- error_reporting(0);
 ?>
 
-    <section class="content-header">
-      <h1>
-       Programas
-      </h1>
-      <ol class="breadcrumb">
-        <li><a><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a>Programas</a></li>        
-      </ol>
-    </section>
+
 <!-- Main content -->
     <section class="content">    
       <div class="row">
@@ -26,15 +17,16 @@ include('conexion2.php');
             </div>
             <div class="box-body">
               <!-- the events -->
+
                   <div id="external-events">
                     <form method="post" action="" id="frm_dias" name="frm_dias" >
-                      <button id="7" type="button" class="btn btn-block bg-yellow btn-default">Domingo</button>
-                      <button id="1" type="button" class="btn btn-block bg-green btn-default">Lunes</button>   
-                      <button id="2" type="button" class="btn btn-block bg-aqua btn-default">Martes</button>
-                      <button id="3" type="button" class="btn btn-block bg-light-blue btn-default">Miercoles</button>
-                      <button id="4" type="button" class="btn btn-block bg-red btn-default">Jueves</button>
-                      <button id="5" type="button" class="btn btn-block bg-purple btn-default">Viernes</button>
-                      <button id="6" type="button" class="btn btn-block bg-orange btn-default">Sabado</button>    
+                      <button id="consulta_domingo" type="button" class="btn btn-block bg-yellow btn-default">Domingo</button>
+                      <button id="consulta_lunes" type="button" class="btn btn-block bg-green btn-default">Lunes</button>   
+                      <button id="consulta_martes" type="button" class="btn btn-block bg-aqua btn-default">Martes</button>
+                      <button id="consulta_miercoles" type="button" class="btn btn-block bg-light-blue btn-default">Miercoles</button>
+                      <button id="consulta_jueves" type="button" class="btn btn-block bg-red btn-default">Jueves</button>
+                      <button id="consulta_viernes" type="button" class="btn btn-block bg-purple btn-default">Viernes</button>
+                      <button id="consulta_sabado" type="button" class="btn btn-block bg-orange btn-default">Sabado</button>    
                     </form>                                                      
                   </div>
  
@@ -45,7 +37,7 @@ include('conexion2.php');
         <div class="col-xs-9"> 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Parrilla de Horarios</h3>
+              <h3 class="box-title">Horarios</h3>
                <div class="box-tools">            
               </div>
             </div>        
@@ -68,11 +60,17 @@ include('conexion2.php');
                           <li class="nav-two"><a href="#tarde" class="current" >TARDE</a></li>
                           <li class="nav-three"><a href="#noche">NOCHE</a></li>                                                               
                         </ul>   
-                        <!-- div prueba -->
+                        <!-- div prueba 
+                        se imprime el dia 
+                        lunes
+                        martes
+
+                      -->
+
                         <div id="prueba" align="center">      
                           <div class="list-wrap" align="center">                            
                             <ul style="position: relative; top: 0px; left: 0px; display: none;" id="manana" >
-                              <?php echo $con_horario[0]; ?>
+                              <?php echo $con_horario[0]; ?>                          
                             </ul>                        
                             <!--- tarde -->
                             <ul id="tarde">
@@ -98,9 +96,10 @@ include('conexion2.php');
       </div>
     </section>
 
+
+<!--scrip para mostar los detalles del horario-->
   <script src="Archivos/bjqs-1.js"></script>
-  <script src="Archivos/analytics.js" async=""></script>
-  <script type="text/javascript" language="javascript" src="Archivos/jquery-1.js"></script>       
+  <script src="Archivos/analytics.js" async=""></script><script type="text/javascript" language="javascript" src="Archivos/jquery-1.js"></script>       
   <script type="text/javascript" src="Archivos/csshorizontalmenu2.js"></script>
   <script type="text/javascript" src="Archivos/organictabs.js"></script>
     <!--cambio de tabs-->
@@ -122,5 +121,80 @@ include('conexion2.php');
      obj.style.display = (obj.style.display=='none') ? 'block' : 'none';
     }
   </script>
+<!--fin del script-->
 
-  
+
+  <script type="text/javascript"> 
+   
+ $(document).ready(function(){
+//semana 
+
+      $('#consulta_lunes').click(function() {
+        $.ajax({
+          url: 'lunes_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });  
+      $('#consulta_martes').click(function() {
+        $.ajax({
+          url: 'martes_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });  
+     $('#consulta_miercoles').click(function() {
+        $.ajax({
+          url: 'miercoles_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });  
+     $('#consulta_jueves').click(function() {
+        $.ajax({
+          url: 'jueves_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });  
+     $('#consulta_viernes').click(function() {
+        $.ajax({
+          url: 'viernes_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });  
+     $('#consulta_sabado').click(function() {
+        $.ajax({
+          url: 'sabado_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });  
+     $('#consulta_domingo').click(function() {
+        $.ajax({
+          url: 'domingo_ajax.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });  
+
+//
+    });
+  </script>
+
+  <script type="text/javascript">  
+      function validar(){
+        if(document.getElementById('nombre').value == ''){
+          alert("Escriba el nombre");
+          return false;
+        }
+      }
+  </script>

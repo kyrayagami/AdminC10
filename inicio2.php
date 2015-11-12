@@ -66,7 +66,7 @@ if($_POST)
       });
       $('#btn_horario').click(function(){
         $.ajax({
-            url: 'horario_ajax.php',
+            url: 'lunes_ajax.php',
           success: function(data) {
             $('#div_dinamico').html(data);
           } 

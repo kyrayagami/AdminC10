@@ -9,7 +9,7 @@ function obtenerProgramas($conexion){
 function obtenerDias($conexion){
 	$sql=mysql_query("select * from programas where estatus='ACTIVO'");
 }
-function consultaHorarios($conexion){
+/*function consultaHorarios($conexion){
 	$acu=0;
 	$salida='';
 	$M='';
@@ -25,12 +25,6 @@ function consultaHorarios($conexion){
 	{
 		while ($dato=mysql_fetch_array($consulta))
 	 	{	 		
-	 		/*
-	 		$hora=str_replace(":","",$horaBD); //MySQL devuelve la hora en formato H:i:s, debemos quitarle los dos puntos; 
-			if (intval($hora)<intval(date("His")) $turno="T1";  
-	 		*/
-
-			//algo para separar por dia
 			// mañana			
 			$acu=$acu+1;
 	 		$la="layer".$acu."";
@@ -110,7 +104,8 @@ function consultaHorarios($conexion){
 	}
 	$salida = array($M,$T,$N);	
 	return $salida;
-}
+}*/
+
 function consultaProgramas($conexion){
 	$salida='';
 	//Realizamos la Consulta que nos traera todos los registros de la BD
@@ -197,4 +192,697 @@ else{
 	mysql_query("set names 'utf-8'",$conex);
 }
 error_reporting(0);
+
+//
+//prueba de envio  informacion
+//
+
+function consulta_lunes($conexion){
+$acu=0;
+$salida='';
+$M='';
+$T='';
+$N='';
+$consulta=mysql_query("SELECT * 
+FROM horario_prueba, programas_prueba
+WHERE programas_prueba.estatus =  'ACTIVO'
+AND horario_prueba.dia =  '1'
+AND programas_prueba.id_programa = horario_prueba.id_programa
+ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{	 		
+			// mañana			
+			$acu=$acu+1;
+	 		$la="layer".$acu."";
+	 		$muestra="show('layer".$acu."')";
+			$hora=str_replace(":", "",$dato["hora_inicio"]);
+
+	 		if($hora<=115959){
+	 			$M.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		}
+	 			// tarde 
+	 		if ($hora>=120000 && $hora<=185959) {
+	 				$T.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		} 
+	 		if($hora>=190000 && $hora<=235959){
+	 				//noche
+	 				$N.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 				}
+
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+	}
+	$salida = array($M,$T,$N);	
+	return $salida;
+}
+
+function consulta_martes($conexion){
+$acu=0;
+$salida='';
+$M='';
+$T='';
+$N='';
+$consulta=mysql_query("SELECT * 
+FROM horario_prueba, programas_prueba
+WHERE programas_prueba.estatus =  'ACTIVO'
+AND horario_prueba.dia =  '2'
+AND programas_prueba.id_programa = horario_prueba.id_programa
+ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{	 		
+			// mañana			
+			$acu=$acu+1;
+	 		$la="layer".$acu."";
+	 		$muestra="show('layer".$acu."')";
+			$hora=str_replace(":", "",$dato["hora_inicio"]);
+
+	 		if($hora<=115959){
+	 			$M.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		}
+	 			// tarde 
+	 		if ($hora>=120000 && $hora<=185959) {
+	 				$T.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		} 
+	 		if($hora>=190000 && $hora<=235959){
+	 				//noche
+	 				$N.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 			}
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+	}
+	$salida = array($M,$T,$N);	
+	return $salida;
+}
+
+function consulta_miercoles($conexion){
+$acu=0;
+$salida='';
+$M='';
+$T='';
+$N='';
+$consulta=mysql_query("SELECT * 
+FROM horario_prueba, programas_prueba
+WHERE programas_prueba.estatus =  'ACTIVO'
+AND horario_prueba.dia =  '3'
+AND programas_prueba.id_programa = horario_prueba.id_programa
+ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{	 		
+	 		/*
+	 		$hora=str_replace(":","",$horaBD); //MySQL devuelve la hora en formato H:i:s, debemos quitarle los dos puntos; 
+			if (intval($hora)<intval(date("His")) $turno="T1";  
+	 		*/
+			// mañana			
+			$acu=$acu+1;
+	 		$la="layer".$acu."";
+	 		$muestra="show('layer".$acu."')";
+			$hora=str_replace(":", "",$dato["hora_inicio"]);
+
+	 		if($hora<=115959){
+	 			$M.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		}
+	 			// tarde 
+	 		if ($hora>=120000 && $hora<=185959) {
+	 				$T.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		} 
+	 		if($hora>=190000 && $hora<=235959){
+	 				//noche
+	 				$N.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 				}
+
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+	}
+	$salida = array($M,$T,$N);	
+	return $salida;
+}
+
+function consulta_jueves($conexion){
+$acu=0;
+$salida='';
+$M='';
+$T='';
+$N='';
+$consulta=mysql_query("SELECT * 
+FROM horario_prueba, programas_prueba
+WHERE programas_prueba.estatus =  'ACTIVO'
+AND horario_prueba.dia =  '4'
+AND programas_prueba.id_programa = horario_prueba.id_programa
+ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{	 		
+			// mañana			
+			$acu=$acu+1;
+	 		$la="layer".$acu."";
+	 		$muestra="show('layer".$acu."')";
+			$hora=str_replace(":", "",$dato["hora_inicio"]);
+
+	 		if($hora<=115959){
+	 			$M.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		}
+	 			// tarde 
+	 		if ($hora>=120000 && $hora<=185959) {
+	 				$T.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		} 
+	 		if($hora>=190000 && $hora<=235959){
+	 				//noche
+	 				$N.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 				}
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+	}
+	$salida = array($M,$T,$N);	
+	return $salida;
+}
+
+function consulta_viernes($conexion){
+$acu=0;
+$salida='';
+$M='';
+$T='';
+$N='';
+$consulta=mysql_query("SELECT * 
+FROM horario_prueba, programas_prueba
+WHERE programas_prueba.estatus =  'ACTIVO'
+AND horario_prueba.dia =  '5'
+AND programas_prueba.id_programa = horario_prueba.id_programa
+ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{	 		
+			// mañana			
+			$acu=$acu+1;
+	 		$la="layer".$acu."";
+	 		$muestra="show('layer".$acu."')";
+			$hora=str_replace(":", "",$dato["hora_inicio"]);
+
+	 		if($hora<=115959){
+	 			$M.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		}
+	 			// tarde 
+	 		if ($hora>=120000 && $hora<=185959) {
+	 				$T.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		} 
+	 		if($hora>=190000 && $hora<=235959){
+	 				//noche
+	 				$N.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 				}
+
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+	}
+	$salida = array($M,$T,$N);	
+	return $salida;
+}
+
+function consulta_sabado($conexion){
+$acu=0;
+$salida='';
+$M='';
+$T='';
+$N='';
+$consulta=mysql_query("SELECT * 
+FROM horario_prueba, programas_prueba
+WHERE programas_prueba.estatus =  'ACTIVO'
+AND horario_prueba.dia =  '6'
+AND programas_prueba.id_programa = horario_prueba.id_programa
+ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{	 		
+			// mañana			
+			$acu=$acu+1;
+	 		$la="layer".$acu."";
+	 		$muestra="show('layer".$acu."')";
+			$hora=str_replace(":", "",$dato["hora_inicio"]);
+
+	 		if($hora<=115959){
+	 			$M.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		}
+	 			// tarde 
+	 		if ($hora>=120000 && $hora<=185959) {
+	 				$T.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		} 
+	 		if($hora>=190000 && $hora<=235959){
+	 				//noche
+	 				$N.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 				}
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+	}
+	$salida = array($M,$T,$N);	
+	return $salida;
+}
+
+function consulta_domingo($conexion){
+$acu=0;
+$salida='';
+$M='';
+$T='';
+$N='';
+$consulta=mysql_query("SELECT * 
+FROM horario_prueba, programas_prueba
+WHERE programas_prueba.estatus =  'ACTIVO'
+AND horario_prueba.dia =  '7'
+AND programas_prueba.id_programa = horario_prueba.id_programa
+ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{	 		
+
+			// mañana			
+			$acu=$acu+1;
+	 		$la="layer".$acu."";
+	 		$muestra="show('layer".$acu."')";
+			$hora=str_replace(":", "",$dato["hora_inicio"]);
+
+	 		if($hora<=115959){
+	 			$M.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		}
+	 			// tarde 
+	 		if ($hora>=120000 && $hora<=185959) {
+	 				$T.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		} 
+	 		if($hora>=190000 && $hora<=235959){
+	 				//noche
+	 				$N.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 				}	 		
+	 		
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+	}
+	$salida = array($M,$T,$N);	
+	return $salida;
+}
+
 ?>
