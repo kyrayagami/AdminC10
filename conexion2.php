@@ -27,6 +27,7 @@ function obtenerProgramas($conexion){
 	}
 	return $resultado;
 }
+
 /*function consultaHorarios($conexion){
 	$acu=0;
 	$salida='';
@@ -222,11 +223,11 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-FROM horario_prueba, programas_prueba
-WHERE programas_prueba.estatus =  'ACTIVO'
-AND horario_prueba.dia =  '1'
-AND programas_prueba.id_programa = horario_prueba.id_programa
-ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =  '1'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -320,11 +321,11 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-FROM horario_prueba, programas_prueba
-WHERE programas_prueba.estatus =  'ACTIVO'
-AND horario_prueba.dia =  '2'
-AND programas_prueba.id_programa = horario_prueba.id_programa
-ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =  '2'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -417,20 +418,17 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-FROM horario_prueba, programas_prueba
-WHERE programas_prueba.estatus =  'ACTIVO'
-AND horario_prueba.dia =  '3'
-AND programas_prueba.id_programa = horario_prueba.id_programa
-ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =  '3'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
 		while ($dato=mysql_fetch_array($consulta))
 	 	{	 		
-	 		/*
-	 		$hora=str_replace(":","",$horaBD); //MySQL devuelve la hora en formato H:i:s, debemos quitarle los dos puntos; 
-			if (intval($hora)<intval(date("His")) $turno="T1";  
-	 		*/
+
 			// mañana			
 			$acu=$acu+1;
 	 		$la="layer".$acu."";
@@ -519,11 +517,11 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-FROM horario_prueba, programas_prueba
-WHERE programas_prueba.estatus =  'ACTIVO'
-AND horario_prueba.dia =  '4'
-AND programas_prueba.id_programa = horario_prueba.id_programa
-ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =  '4'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -616,11 +614,11 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-FROM horario_prueba, programas_prueba
-WHERE programas_prueba.estatus =  'ACTIVO'
-AND horario_prueba.dia =  '5'
-AND programas_prueba.id_programa = horario_prueba.id_programa
-ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =  '5'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -714,11 +712,11 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-FROM horario_prueba, programas_prueba
-WHERE programas_prueba.estatus =  'ACTIVO'
-AND horario_prueba.dia =  '6'
-AND programas_prueba.id_programa = horario_prueba.id_programa
-ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =  '6'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -811,11 +809,11 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-FROM horario_prueba, programas_prueba
-WHERE programas_prueba.estatus =  'ACTIVO'
-AND horario_prueba.dia =  '7'
-AND programas_prueba.id_programa = horario_prueba.id_programa
-ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =  '7'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -902,5 +900,6 @@ ORDER BY horario_prueba.dia, horario_prueba.hora_inicio ASC
 	$salida = array($M,$T,$N);	
 	return $salida;
 }
+
 
 ?>

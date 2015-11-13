@@ -50,7 +50,7 @@ if($_POST)
     $(document).ready(function(){
       $('#boton_carga_horario').click(function(){
         $.ajax({
-          url: 'horario.php',
+          url: 'domingo_ajax.php',
           success: function(data) {
             $('#div_dinamico').html(data);
           } 

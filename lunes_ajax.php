@@ -4,6 +4,7 @@ include('conexion2.php');
  if($statusConexion==true){
   $con_horario= consulta_lunes($conex);
  }
+ error_reporting(0);
 ?>
 
 
