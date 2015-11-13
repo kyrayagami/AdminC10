@@ -26,7 +26,7 @@ if($_POST)
 <!-- load jQuery and the plugin -->
 <link href="Archivos/css_002.css" rel="stylesheet" type="text/css"> 
 <!-- demo.css contains additional styles used to set up this demo page - not required for the slider --> 
-<link rel="stylesheet" href="Archivos/demo.css"
+<link rel="stylesheet" href="Archivos/demo.css">
   <!--final links de canal once para agregar a la siguiente-->
 
   <!-- Tell the browser to be responsive to screen width -->
@@ -143,6 +143,14 @@ if($_POST)
         });
       });
 //final del agregado
+      $('#btn_adm_horario').click(function(){
+        $.ajax({
+          url: 'horario_administrar.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });
 
     });
   </script>
@@ -314,12 +322,14 @@ if($_POST)
           <span>Programa</span>          
           </a>
         </li>
+        <!--
         <li>
           <a id="boton_cargar" href="#">
           <i class="fa fa-circle-o"></i> 
           <span>Prueba ajax</span>
           </a>
-        </li>  
+        </li> 
+        --> 
 
         <li>
           <a id="btn_horario" href="#">
@@ -330,7 +340,31 @@ if($_POST)
         <li>
           <a id="boton_carga_horario" href="#">
           <span>Horarios_</span>
-        </li>                  
+          </a>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Horarios </span>
+            <i class="fa fa-angle-left pull-right"></i>       
+          </a>
+          <ul class="treeview-menu">
+            <li>
+              <!--<a id="btn_horario" href="#">-->
+              <a>
+              <i class="fa fa-circle-o"></i> 
+              <span> Ver Horarios</span>
+              </a>
+            </li>
+            <li>
+              <a id="btn_adm_horario" href="#">
+                <i class="fa fa-circle-o"></i> 
+                <span>Administrar Horarios</span>
+              </a>
+            </li>            
+          </ul>
+        </li>                
       </ul>      
     </section>    
   </aside>

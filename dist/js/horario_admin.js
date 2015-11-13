@@ -1,5 +1,5 @@
 $(function(){	
-	var tipo='';
+	//var tipo='';
 	$('#div_frm_h').dialog({		
 		autoOpen:false,
 		modal:true,
@@ -16,12 +16,15 @@ $(function(){
 		}
 	});			
 	$('#agregar_h').on('click',function(){
-		$('#div_frm_c').dialog('open');
+		$('#div_frm_h').dialog('open');
 		tipo='nuevo';
 		$('#frm_horario input[type=text]').val('');
-		//$('#status_user option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT		
+		$('#frm_horario input[type=time]').val('00:00');
+		$('#programa option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT		
+		$('#dia option[selected]').removeAttr('selected');
 	});
-	$('#loader_h').hide();	
+	$('#loader_h').hide();
+	/*
 	$('#frm_horario').on('submit',function(){		
 		var datos=$(this).serialize();
 		//alert(""+datos);
@@ -55,6 +58,7 @@ $(function(){
 		});			
 		return false;//RETORNAMOS FALSE PARA QUE NO HAGA UN RELOAD EN LA PAGINA
 	});
+*/
 	/*
 	$("#lis_horario").on("click","a",function(){
 		var pos=$(this).parent().parent();

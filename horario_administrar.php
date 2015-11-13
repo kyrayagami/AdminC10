@@ -1,13 +1,13 @@
 <?php
 include("conexion2.php");
    $contenido="";   
-   //$dias="";// crea metodo en conexion2
-   $programa="" //crear metodo para obtener los datos
+   $dias="";// crea metodo en conexion2
+   $programa=""; //crear metodo para obtener los datos
     if($statusConexion==true){
       //$contenido=consultaProgramas($conex);
-    	//$dias="";
-    	$progra=obtenerProgramas($conex);
-  }
+      $dias=obtenerDias($conex);
+      $progra=obtenerProgramas($conex);
+    }
 ?>    
     <section class="content-header">
       <h1>
@@ -23,22 +23,36 @@ include("conexion2.php");
             <fieldset>
               <label>Dia</label>
               <br>
-              	<select class="form-control" id="dia" name="dia">
-					<option>Lunes</option>
-					<option>Martes</option>
-					<option>Miercoles</option>
-					<option>Jueves</option>
-					<option>Viernes</option>
-					<option>Sabado</option>
-					<option>Domingo</option>					
-				</select>
+              <select class="form-control" id="dia" name="dia">
+                <option value="">Seleccione un dia</option>
+                <?php echo $dias ?>
+          <!--
+          <option>Lunes</option>
+          <option>Martes</option>
+          <option>Miercoles</option>
+          <option>Jueves</option>
+          <option>Viernes</option>
+          <option>Sabado</option>
+          <option>Domingo</option>          
+          -->
+              </select>
               <label>Nombre del programa</label>          
-              <input type="text" id="nombre" name="nombre" placeholder="nombre de la categoria" required />
+              <br>
+              <select class="form-control" id="programa" name="programa" required>
+                  <option value="">Seleccione un programa</option>
+                    <?php echo $progra ?>
+              </select>
+              <label>Hora Inicio de la programacion</label><br>
+              <input type="time" name="hora"><br>
+              <label>Duracion de la programacion</label><br>
+              <input type="time" name="duracion"><br>
+              <label>Descripcion de la programacion</label><br>
+              <input type="text" id="descripcion" name="descripcion" placeholder="descripcion de la programacion" required />              
             </fieldset>
-            <fieldset id="btn_c">
+            <fieldset id="btn_h">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
             </fieldset>
-            <fieldset id="loader_c">
+            <fieldset id="loader_h">
               <span>Espere un momento</span>
               <img src="dist/img/loader.gif">
             </fieldset>
@@ -82,4 +96,4 @@ include("conexion2.php");
         <!-- /.col -->                                    
     </section>        
     <!-- /.content -->          
-    <script type="text/javascript" src="dist/js/program.js"></script>
+    <script type="text/javascript" src="dist/js/horario_admin.js"></script>

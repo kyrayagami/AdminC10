@@ -1,13 +1,31 @@
 <?php
 $statusConexion=true;
 function consultHorarios2($conexion){
-
-}
-function obtenerProgramas($conexion){
-
+	$result="";
+	return $result;
 }
 function obtenerDias($conexion){
+	$resul='';
+	$sql=mysql_query("select * from dias");
+	if(mysql_num_rows($sql)>0){
+		while ($dato=mysql_fetch_array($sql))
+		{
+			$resul.='
+			<option value="'.$dato["id_dia"].'"> '.$dato["dia"].' </option>
+			';
+		}
+	}
+	return $resul;
+}
+function obtenerProgramas($conexion){
+	$resultado='';
 	$sql=mysql_query("select * from programas where estatus='ACTIVO'");
+	if(mysql_num_rows($sql)>0){
+		while ($dato=mysql_fetch_array($sql)){
+			$resultado.='<option value="'.$dato["id_programa"].'">'.$dato["nombre"].'</option>';
+		}		
+	}
+	return $resultado;
 }
 /*function consultaHorarios($conexion){
 	$acu=0;
