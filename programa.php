@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include("conexion2.php");
    $contenido="";   
     if($statusConexion==true){

@@ -21,9 +21,15 @@ include("conexion2.php");
     <div id="div_frm_h">
           <form id="frm_horario" name="frm_horario" action="" method="post">
             <fieldset>
+              <label>Nombre del programa</label>          
+              <br>
+              <select class="form-control" id="id_programa" name="id_programa" required>
+                  <option value="">Seleccione un programa</option>
+                    <?php echo $progra ?>
+              </select>
               <label>Dia</label>
               <br>
-              <select class="form-control" id="dia" name="dia">
+              <select class="form-control" id="dia" name="dia" required>
                 <option value="">Seleccione un dia</option>
                 <?php echo $dias ?>
           <!--
@@ -35,22 +41,18 @@ include("conexion2.php");
           <option>Sabado</option>
           <option>Domingo</option>          
           -->
-              </select>
-              <label>Nombre del programa</label>          
-              <br>
-              <select class="form-control" id="programa" name="programa" required>
-                  <option value="">Seleccione un programa</option>
-                    <?php echo $progra ?>
-              </select>
+              </select>              
               <label>Hora Inicio de la programacion</label><br>
-              <input type="time" name="hora"><br>
-              <label>Duracion de la programacion</label><br>
-              <input type="time" name="duracion"><br>
+              <input type="time" id="hora" name="hora" onchange="myFunction()" />
+              <input type="hidden" id="hora_parse" name="hora_parse" />
+              <br>
+              <label>Duracion de la programacion (min)</label><br>
+              <input type="number" name="duracion" /><br>
               <label>Descripcion de la programacion</label><br>
-              <input type="text" id="descripcion" name="descripcion" placeholder="descripcion de la programacion" required />              
+              <input type="text" id="descripcion" name="descripcion" placeholder="descripcion de la programacion" required/>
             </fieldset>
             <fieldset id="btn_h">
-              <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
+              <input type="submit" value="Finalizar" class="btn btn-primary" />
             </fieldset>
             <fieldset id="loader_h">
               <span>Espere un momento</span>
@@ -95,5 +97,11 @@ include("conexion2.php");
         </div>
         <!-- /.col -->                                    
     </section>        
-    <!-- /.content -->          
+    <!-- /.content -->
+    <script>
+      function myFunction() {
+          var x = document.getElementById("hora").value;
+          document.getElementById("hora_parse").value = x;
+        }
+    </script>       
     <script type="text/javascript" src="dist/js/horario_admin.js"></script>

@@ -17,17 +17,20 @@ $(function(){
 	});			
 	$('#agregar_h').on('click',function(){
 		$('#div_frm_h').dialog('open');
-		tipo='nuevo';
 		$('#frm_horario input[type=text]').val('');
-		$('#frm_horario input[type=time]').val('00:00');
-		$('#programa option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT		
-		$('#dia option[selected]').removeAttr('selected');
+		$('#frm_horario input[type=number]').val('');
+		$('#frm_horario input[type=hidden]').val('');
+		$('#frm_horario input[type=time]').val('');		
+		//$('#id_programa option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT
+		$('#id_programa option[selected]').prop('selected' , false);
+		$('#dia option[selected]').removeAttr('selected');	
+		tipo='nuevo';		
 	});
 	$('#loader_h').hide();
-	/*
+	
 	$('#frm_horario').on('submit',function(){		
 		var datos=$(this).serialize();
-		//alert(""+datos);
+		alert(""+datos);		
 		$.ajax({
 			type:'POST',
 			dataType:"json",
@@ -57,8 +60,8 @@ $(function(){
 			}
 		});			
 		return false;//RETORNAMOS FALSE PARA QUE NO HAGA UN RELOAD EN LA PAGINA
+		
 	});
-*/
 	/*
 	$("#lis_horario").on("click","a",function(){
 		var pos=$(this).parent().parent();

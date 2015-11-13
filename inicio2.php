@@ -238,6 +238,12 @@ if($_POST)
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+        <li>
+              <a id="btn_adm_horario" href="#">
+                <i class="fa fa-circle-o"></i> 
+                <span>Administrar Horarios</span>
+              </a>
+        </li>
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> 
@@ -337,11 +343,13 @@ if($_POST)
             <span> Horarios de Programas</span>
           </a>
         </li>      
+        <!--
         <li>
           <a id="boton_carga_horario" href="#">
           <span>Horarios_</span>
           </a>
         </li>
+        -->
 
         <li class="treeview">
           <a href="#">
@@ -356,15 +364,9 @@ if($_POST)
               <i class="fa fa-circle-o"></i> 
               <span> Ver Horarios</span>
               </a>
-            </li>
-            <li>
-              <a id="btn_adm_horario" href="#">
-                <i class="fa fa-circle-o"></i> 
-                <span>Administrar Horarios</span>
-              </a>
-            </li>            
+            </li>                      
           </ul>
-        </li>                
+        </li>         
       </ul>      
     </section>    
   </aside>

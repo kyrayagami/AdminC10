@@ -12,8 +12,11 @@ if($statusConexion){
 						$consulta=mysql_query("
 							insert into horario
 							(dia,id_programa,hora_inicio,duracion,descripcion) 
-							values(".$_POST['dia'].",".$_POST['id_programa'].",'".$_POST['hora_inicio']."',
-								'".$_POST['duracion']."','".$_POST['descripcion']."')"
+							values(".$_POST['dia'].",
+								".$_POST['id_programa'].",
+								'".$_POST['hora']."',
+								'".$_POST['duracion']."',
+								'".$_POST['descripcion']."')"
 							,$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Insertado";
