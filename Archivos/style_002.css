@@ -69,7 +69,7 @@ display: block; border-bottom: 1px solid #666; padding: 4px; color: #666; font-f
 	}
 #example-one ul li.espacio-nav{width:35px; height:15px; vertical-align:bottom;
 	}	
-#example-one ul li.nav-one a.current, #example-one ul.manana li a:hover { background-repeat:no-repeat;/*background-color: #000000;*/ color: #00ffcc;  
+#example-one ul li.nav-one a.current, #example-one ul.manana li a:hover { background-repeat:no-repeat;/*background-color: #000000;*/ color: #556b2f;  
 	/*filter: Alpha(opacity=80); 
 	opacity: 0.8;	
 	border-top-left-radius: 15px;
@@ -100,7 +100,7 @@ display: block; border-bottom: 1px solid #666; padding: 4px; color: #666; font-f
 	top: 50%;
 	margin-top: -30px;
 }*/
-#example-one ul li.nav-two a.current, #example-one ul.tarde li a:hover {  background-repeat:no-repeat; color: #00ffcc; 
+#example-one ul li.nav-two a.current, #example-one ul.tarde li a:hover {  background-repeat:no-repeat; color: #556b2f; 
 	/*filter: Alpha(opacity=80); 
 	opacity: 0.8;	
 	border-top-left-radius: 15px;
@@ -109,7 +109,7 @@ display: block; border-bottom: 1px solid #666; padding: 4px; color: #666; font-f
 	-moz-border-radius-topleft:15px;
 	-webkit-border-top-right-radius:35px;
 	-webkit-border-top-left-radius:15px;*/}
-#example-one ul li.nav-three a.current, #example-one ul.noche li a:hover {  background-repeat:no-repeat; color: #00ffcc;
+#example-one ul li.nav-three a.current, #example-one ul.noche li a:hover {  background-repeat:no-repeat; color: #556b2f;
 	/*filter: Alpha(opacity=80); 
 	opacity: 0.8;	
 	border-top-left-radius: 15px;
