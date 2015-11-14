@@ -99,9 +99,9 @@ include('conexion2.php');
 
 <!--scrip para mostar los detalles del horario-->
   <script src="Archivos/bjqs-1.js"></script>
-  <script src="Archivos/analytics.js" async=""></script><script type="text/javascript" language="javascript" src="Archivos/jquery-1.js"></script>       
-  <script type="text/javascript" src="Archivos/csshorizontalmenu2.js"></script>
+  <script type="text/javascript" language="javascript" src="Archivos/jquery-1.js"></script>       
   <script type="text/javascript" src="Archivos/organictabs.js"></script>
+    <!--cambio de tabs-->
     <!--cambio de tabs-->
     <script type="text/javascript">
         $(function() {
