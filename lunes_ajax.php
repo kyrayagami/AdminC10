@@ -43,7 +43,7 @@ include('conexion2.php');
               </div>
             </div>        
             <div class="box-body table-responsive no-padding">                          
-              <table cellpadding="0" cellspacing="0" align="center" background="Archivos/gray.jpg" border="0" width="680">
+              <table cellpadding="0" cellspacing="0" align="center"  border="0" width="680">
                 <tbody>
                   <tr>
                   <td align="left" valign="top" width="670">
