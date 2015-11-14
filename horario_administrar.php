@@ -5,6 +5,7 @@ include("conexion2.php");
    $programa=""; //crear metodo para obtener los datos
     if($statusConexion==true){
       //$contenido=consultaProgramas($conex);
+      $contenido=consultHorarios2($conex);
       $dias=obtenerDias($conex);
       $progra=obtenerProgramas($conex);
     }
@@ -83,11 +84,17 @@ include("conexion2.php");
                       <th>Jueves</th>
                       <th>Viernes</th>
                       <th>Sabado</th>
-                      <th>Domingo</th>
+                      <th>Domingo <?php echo count($contenido)?></th>
                   </tr>  
                 </thead>              
                 <tbody id="lis_horario">
-                <?php echo $contenido ?>               
+                <?php                
+                $conta=0;                
+                while(count($contenido)>=$conta){
+                  echo $contenido[$conta];
+                  $conta++;
+                }
+                ?>                               
                 </tbody>
               </table>
             </div>

@@ -53,7 +53,7 @@ $(function(){
 				if(response.respuesta=="DONE"){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE
 					$("#lis_categorias").html(response.contenido);//cargo los registros que devuelve ajax
 					$('#div_frm_c').dialog('close');//CERRAMOS EL FORM
-					$('#btn_c').hide();
+					$('#btn_c').show();
 					$('#loader_c').hide();//OCULTAMOS EL LOADER
 				}
 				else{

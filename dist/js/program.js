@@ -40,7 +40,7 @@ $(function(){
 	$('#loader2').hide();
 	$('#frm_programa').on('submit',function(){		
 		var datos=$(this).serialize();
-		alert(""+datos);
+		//alert(""+datos);
 		$.ajax({
 			type:'POST',
 			dataType:"json",
@@ -54,7 +54,7 @@ $(function(){
 				if(response.respuesta=="DONE"){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE
 					$("#lis_programas").html(response.contenido);//cargo los registros que devuelve ajax
 					$('#div_frm').dialog('close');//CERRAMOS EL FORM
-					$('#btn').hide();
+					$('#btn').show();
 					$('#loader').hide();//OCULTAMOS EL LOADER
 				}
 				else{
@@ -114,7 +114,7 @@ $(function(){
 				else{
 					alert("Ocurrio un error al ejecutar la operacion, intentelo de nuevo");
 					$('#loader2').hide();
-					$('#btn2').shiow();
+					$('#btn2').show();
 				}								
 			},
 			error: function(){//SI OCURRE UN ERROR 

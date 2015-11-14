@@ -44,7 +44,7 @@ $(function(){
 				if(response.respuesta=="DONE"){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE
 					$("#lis_horario").html(response.contenido);//cargo los registros que devuelve ajax
 					$('#div_frm_h').dialog('close');//CERRAMOS EL FORM
-					$('#btn_h').hide();
+					$('#btn_h').show();
 					$('#loader_h').hide();//OCULTAMOS EL LOADER
 				}
 				else{

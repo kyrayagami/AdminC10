@@ -4,7 +4,7 @@ include('conexion2.php');
  if($statusConexion==true){
   $con_horario= consultaHorarios($conex);
  }
- error_reporting(0);
+ //error_reporting(0);
 ?>
 
     <section class="content-header">
@@ -37,24 +37,28 @@ include('conexion2.php');
                       <button id="6" type="button" class="btn btn-block bg-orange btn-default">Sabado</button>    
                     </form>                                                      
                   </div>
- 
-            </div>
+           </div>
             <!-- /.box-body -->
           </div> 
         </div>
+
         <div class="col-xs-9"> 
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Parrilla de Horarios</h3>
                <div class="box-tools">            
               </div>
-            </div>        
+            </div>
+
             <div class="box-body table-responsive no-padding">                          
+              
               <table cellpadding="0" cellspacing="0" align="center" background="Archivos/gray.jpg" border="0" width="680">
                 <tbody>
                   <tr>
                   <td align="left" valign="top" width="670">
+
                     <div id="page-wrap" align="center"> 
+
                       <div id="example-one" align="center">              
                         <ul class="nav">
                         <!--
@@ -86,21 +90,24 @@ include('conexion2.php');
                             </ul>
                           </div> <!-- END List Wrap -->    
                         </div> <!-- prueba -->
-                      </div> <!-- END Organic Tabs (Example One) -->                                  
+                      </div> <!-- END Organic Tabs (Example One) --> 
+
                     </div>
                   </td>
                   </tr>
                 </tbody>              
-              </table>                
+              </table>
+
             </div>                    
           <!-- box -->
+          </div>
         </div>
       </div>
     </section>
 
   <script src="Archivos/bjqs-1.js"></script>
   <script src="Archivos/analytics.js" async=""></script>
-  <script type="text/javascript" language="javascript" src="Archivos/jquery-1.js"></script>       
+  <script type="text/javascript" language="javascript" src="Archivos/jquery-1.js"></script>
   <script type="text/javascript" src="Archivos/csshorizontalmenu2.js"></script>
   <script type="text/javascript" src="Archivos/organictabs.js"></script>
     <!--cambio de tabs-->

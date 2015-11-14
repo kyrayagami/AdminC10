@@ -1,8 +1,103 @@
 <?php
 $statusConexion=true;
-function consultHorarios2($conexion){
-	$result="";
-	return $result;
+function consultHorarios2($conexion){	
+/*
+$acu=0;
+$salida='';
+$M='';
+$T='';
+$N='';
+*/
+/*
+$lu='';
+$ma='';
+$mi='';
+$ju='';
+$vi='';
+$sa='';
+$do='';*/
+$dia=1;
+$cont=0;
+$array1='';
+$consulta=mysql_query("SELECT * 
+FROM horario, programas
+WHERE programas.estatus =  'ACTIVO'
+AND programas.id_programa = horario.id_programa
+ORDER BY horario.dia, horario.hora_inicio ASC ");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{
+	 		if($dato["dia"]==$dia){
+	 			$num=$dia-1;
+	 			$array1[$num][$cont]='<td>'.$dato["nombre"].
+	 			'<br>'.$dato["hora_inicio"].
+	 			'<br>'.$dato["duracion"].	 			
+	 			'</td>';
+	 			$cont++;
+	 		}else{
+	 			$cont=0;
+	 			$dia++;
+	 			$num=$dia-1;
+	 			$array1[$num][$cont]='<td>'.$dato["nombre"].
+	 			'<br>'.$dato["duracion"].'</td>';
+	 		}	 		
+			/*
+			$acu=$acu+1;
+	 		$la="layer".$acu."";
+	 		$muestra="show('layer".$acu."')";
+			$hora=str_replace(":", "",$dato["hora_inicio"]);
+
+	 		if($hora<=115959){
+	 			$M.='
+	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
+                <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
+                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                  <div class="sub-layer"> 
+                    <p> 
+                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <br> 
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <br>
+                    </p>
+                    <p></p>
+                  </div> 
+                  </div>
+              </li> 
+	 			';
+	 		}*/	 		
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+		return $salida;
+	}
+	//$salida = array($M,$T,$N);
+	$array2;//='<td>';
+	$contador=0;
+	$pos=0;
+	while ($contador<10) {
+		$array2[$contador]='<tr>';
+		for ($i=0; $i < 7; $i++) { 
+		//for ($j=0; $j < count($array1[i]); $j++) { 
+			//if($array1[$i][$contador]!="" || !is_null($array1[$i][$contador])){
+				$array2[$contador].='<td>'.$array1[$i][$contador].' </td>';
+			/*}
+			else{
+				$array2[$contador].='<td> </td>';
+			}*/
+		//}				
+		}
+		$array2[$contador].='</tr>';
+		$contador++;
+	}	
+
+	return $array2;
 }
 function obtenerDias($conexion){
 	$resul='';

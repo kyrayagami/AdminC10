@@ -17,11 +17,10 @@ if($_POST)
   <title>AdminC10  | Dashboard</title>
 
   <!--inicio links de los horario para agregar a la siguiente-->
-  <link rel="stylesheet" type="text/css" media="all" href="Archivos/jsDatePick_ltr.css">
+<link rel="stylesheet" type="text/css" media="all" href="Archivos/jsDatePick_ltr.css">
 <link href="Archivos/css_003.css" rel="stylesheet" type="text/css">
 <link href="Archivos/css.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="Archivos/style_002.css">
-
 <link rel="stylesheet" href="Archivos/bjqs.css">
 <!-- load jQuery and the plugin -->
 <link href="Archivos/css_002.css" rel="stylesheet" type="text/css"> 

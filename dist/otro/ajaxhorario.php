@@ -20,7 +20,7 @@ if($statusConexion){
 							,$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Insertado";
-							$ContenidoHTML=consultaCategoria($conex);					
+							$ContenidoHTML=consultHorarios2($conex);					
 						}
 						else{
 							$respuesta="BAD";
