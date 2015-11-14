@@ -39,7 +39,7 @@ include('conexion2.php');
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Horarios</h3>
-               <div class="box-tools">            
+               <div class="box-tools">
               </div>
             </div>        
             <div class="box-body table-responsive no-padding">                          
@@ -197,3 +197,5 @@ include('conexion2.php');
         }
       }
   </script>
+
+

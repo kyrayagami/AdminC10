@@ -169,7 +169,7 @@ if($_POST)
   </script>  
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="mueveReloj()">
 <div class="wrapper">
 
   <header class="main-header">
@@ -185,6 +185,11 @@ if($_POST)
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
+
+        <form name="form_reloj">
+         <input type="hidden" name="reloj" size="29" style="background-color : Black; color : White; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()"> 
+        </form> 
+
       </a>
 
       <div class="navbar-custom-menu">
@@ -427,6 +432,41 @@ if($_POST)
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
+
+<!--
+envio de reloj
+-->
+
+<script language="JavaScript">
+  function mueveReloj(){
+    momentoActual = new Date()
+    hora = momentoActual.getHours()
+    minuto = momentoActual.getMinutes()
+    segundo = momentoActual.getSeconds()
+
+    str_segundo = new String (segundo)
+    if (str_segundo.length == 1)
+       segundo = "0" + segundo
+
+    str_minuto = new String (minuto)
+    if (str_minuto.length == 1)
+       minuto = "0" + minuto
+
+    str_hora = new String (hora)
+    if (str_hora.length == 1)
+       hora = "0" + hora 
+
+    horaImprimible = hora + " : " + minuto + " : " + segundo
+
+    document.form_reloj.reloj.value = horaImprimible
+
+    setTimeout("mueveReloj()",1000)
+  }
+</script>
+<!--
+finaliza el envio de reloj
+-->
+
 <!-- Bootstrap 3.3.5 -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
