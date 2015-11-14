@@ -98,8 +98,7 @@ include('conexion2.php');
 
 
 <!--scrip para mostar los detalles del horario-->
-  <script src="Archivos/bjqs-1.js"></script>
-  <script type="text/javascript" language="javascript" src="Archivos/jquery-1.js"></script>       
+  <script src="Archivos/bjqs-1.js"></script>   
   <script type="text/javascript" src="Archivos/organictabs.js"></script>
     <!--cambio de tabs-->
     <script type="text/javascript">
