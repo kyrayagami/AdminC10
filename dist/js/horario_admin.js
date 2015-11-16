@@ -22,7 +22,7 @@ $(function(){
 		$('#frm_horario input[type=hidden]').val('');
 		$('#frm_horario input[type=time]').val('');		
 		//$('#id_programa option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT
-		$('#id_programa option[selected]').prop('selected' , false);
+		$('#id_programa').prop('selected' , false);   //prop('selected' , false);
 		$('#dia option[selected]').removeAttr('selected');	
 		tipo='nuevo';		
 	});

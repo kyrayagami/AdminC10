@@ -89,15 +89,7 @@ if($_POST)
             $('#div_dinamico').html(data);
           } 
         });
-      });
-      $('#btn_notas').click(function(){
-        $.ajax({
-          url: 'notas_ajax.php',
-          success: function(data) {
-            $('#div_dinamico').html(data);
-          } 
-        });
-      });
+      });      
       $('#btn_productor').click(function(){
         $.ajax({
           url: 'productor_ajax.php',
@@ -131,16 +123,7 @@ if($_POST)
             $('#div_dinamico').html(data);
           } 
         });
-      });
-
-      $('#btn_video').click(function(){
-        $.ajax({
-          url: 'video_ajax.php',
-          success: function(data) {
-            $('#div_dinamico').html(data);
-          } 
-        });
-      });
+      });     
 //final del agregado
       $('#btn_adm_horario').click(function(){
         $.ajax({
@@ -286,26 +269,13 @@ if($_POST)
           <i class="fa fa-photo"></i>
           <span>Galeria</span>          
           </a>
-        </li>
-        <li>
-          <a id="btn_notas" href="#"> 
-          <i class="fa fa-file"></i>
-          <span>Notas</span>          
-          </a>
-        </li>  
-
+        </li>      
         <li>
           <a id="btn_conductor" href="#"> 
           <i class="fa fa-puzzle-piece"></i>
           <span>Conductor</span>          
           </a>
-        </li>    
-        <li>
-          <a id="btn_video" href="#"> 
-          <i class="fa fa-puzzle-piece"></i>
-          <span>Video</span>          
-          </a>
-        </li>
+        </li>            
         <li>
           <a id="btn_publi" href="#"> 
           <i class="fa fa-puzzle-piece"></i>

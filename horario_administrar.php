@@ -1,3 +1,6 @@
+<!--
+<link rel="stylesheet" href="dist/css/jquery-ui-1.10.3.custom/jquery-ui-1.10.3.custom/css/no-theme/jquery-ui-1.10.3.custom.min.css"/>
+-->
 <?php
 include("conexion2.php");
    $contenido="";   
@@ -12,7 +15,7 @@ include("conexion2.php");
 ?>    
     <section class="content-header">
       <h1>
-       Horario Administracion
+       Horario horario_administracion
       </h1>
       <ol class="breadcrumb">
         <li><a><i class="fa fa-dashboard"></i> Home</a></li>
@@ -84,11 +87,16 @@ include("conexion2.php");
                       <th>Jueves</th>
                       <th>Viernes</th>
                       <th>Sabado</th>
-                      <th>Domingo <?php echo count($contenido)?></th>
+                      <th>Domingo <?php
+                       //echo count($contenido)
+                      //echo $contenido
+                       ?>
+                       </th>
                   </tr>  
                 </thead>              
                 <tbody id="lis_horario">
                 <?php                
+                
                 $conta=0;                
                 while(count($contenido)>=$conta){
                   echo $contenido[$conta];

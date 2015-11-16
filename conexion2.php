@@ -8,15 +8,18 @@ $M='';
 $T='';
 $N='';
 */
-/*
 $lu='';
 $ma='';
 $mi='';
 $ju='';
 $vi='';
 $sa='';
-$do='';*/
+$do='';
 $dia=1;
+$i=0;
+$j=0;
+$mayor=0;
+$pos=0;
 $cont=0;
 $array1='';
 $consulta=mysql_query("SELECT * 
@@ -28,9 +31,27 @@ ORDER BY horario.dia, horario.hora_inicio ASC ");
 	{
 		while ($dato=mysql_fetch_array($consulta))
 	 	{
+	 		
+	 		if($dato["dia"]!=$dia){
+	 			$dia=$dato["dia"];
+	 			$i=0;
+	 			$j++;
+	 		}
+	 		$array1[$i][$j]='<td>'
+	 			.$dato["dia"].'&nbsp'.$dato["nombre"].
+	 			'<br>'.$dato["hora_inicio"].
+	 			'<br>'.$dato["duracion"].	 			
+	 			'</td>';
+	 		$i++;
+	 		if($i>$mayor)
+				$mayor=$i;
+	 		///////////////////////
+	 		/*
 	 		if($dato["dia"]==$dia){
 	 			$num=$dia-1;
-	 			$array1[$num][$cont]='<td>'.$dato["nombre"].
+	 			$array1[$num][$cont]='<td>'
+				.$dato["dia"].'&nbsp'
+	 			.$dato["nombre"].
 	 			'<br>'.$dato["hora_inicio"].
 	 			'<br>'.$dato["duracion"].	 			
 	 			'</td>';
@@ -41,7 +62,8 @@ ORDER BY horario.dia, horario.hora_inicio ASC ");
 	 			$num=$dia-1;
 	 			$array1[$num][$cont]='<td>'.$dato["nombre"].
 	 			'<br>'.$dato["duracion"].'</td>';
-	 		}	 		
+	 		}	*/ 		
+	 		////////////////////////
 			/*
 			$acu=$acu+1;
 	 		$la="layer".$acu."";
@@ -77,11 +99,29 @@ ORDER BY horario.dia, horario.hora_inicio ASC ");
 		</tr>';
 		return $salida;
 	}
+	$aux=10;
+	$array2='';
+	for ($i=0; $i < $mayor; $i++) { 
+		$array2[$i]='<tr>';
+		for ($j=0; $j < 7; $j++) {			
+			if(is_null($array1[$i][$j]))
+				$array2[$i].='<td></td>';
+			else
+				$array2[$i].=$array1[$i][$j];
+			/*if(count($array1[$i])>$aux)
+				$mayor=$array1[$i][$j];
+			*/
+		}
+		$array2[$i].='</tr>';		
+	}
+	return $array2;
+	//return $mayor;
 	//$salida = array($M,$T,$N);
+	/*
 	$array2;//='<td>';
 	$contador=0;
 	$pos=0;
-	while ($contador<10) {
+	while ($contador<23) {
 		$array2[$contador]='<tr>';
 		for ($i=0; $i < 7; $i++) { 
 		//for ($j=0; $j < count($array1[i]); $j++) { 
@@ -92,12 +132,13 @@ ORDER BY horario.dia, horario.hora_inicio ASC ");
 				$array2[$contador].='<td> </td>';
 			}*/
 		//}				
+			/*
 		}
 		$array2[$contador].='</tr>';
 		$contador++;
 	}	
-
 	return $array2;
+	*/
 }
 function obtenerDias($conexion){
 	$resul='';
