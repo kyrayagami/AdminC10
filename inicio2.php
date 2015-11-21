@@ -168,11 +168,11 @@ if($_POST)
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
-<---->
+<!--Reloj escondido-->
         <form name="form_reloj">
          <input type="hidden" name="reloj" size="29" style="background-color : Black; color : White; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()"> 
         </form> 
-
+<!---->
       </a>
 
       <div class="navbar-custom-menu">
