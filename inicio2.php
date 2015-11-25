@@ -63,14 +63,8 @@ if($_POST)
           } 
         });
       });
-      $('#btn_horario').click(function(){
-        $.ajax({
-            url: 'lunes_ajax.php',
-          success: function(data) {
-            $('#div_dinamico').html(data);
-          } 
-        });
-      });
+
+
       
       $('#btn_categoria').click(function(){
         $.ajax({
@@ -157,7 +151,7 @@ if($_POST)
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="inicio.html" class="logo">
+    <a href="inicio2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>10</span>
       <!-- logo for regular state and mobile devices -->
@@ -168,13 +162,14 @@ if($_POST)
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
-<!--Reloj escondido-->
+
+<!--Reloj escondido y dia de la semana-->
         <form name="form_reloj">
          <input type="hidden" name="reloj" size="29" style="background-color : Black; color : White; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()"> 
-        </form> 
+        </form>         
 <!---->
-      </a>
 
+      </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">                  
           <!-- User Account: style can be found in dropdown.less -->
@@ -288,8 +283,6 @@ if($_POST)
           <span>Slide</span>          
           </a>
         </li>
-
-
         <li>
           <a id="btn_productor" href="#"> 
           <i class="fa fa-user"></i>
@@ -311,7 +304,8 @@ if($_POST)
         </li> 
         --> 
 
-        <li>
+        <li>         
+
           <a id="btn_horario" href="#">
             <i class="fa fa-th"></i> 
             <span> Horarios de Programas</span>
@@ -368,6 +362,7 @@ if($_POST)
   </div>
   -->  
   <!-- Content Wrapper. Contains page content -->
+  <input type="text" name="dia_semana" id="dia_semana" value="">
   <div class="content-wrapper" name="div_dinamico" id="div_dinamico">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -432,6 +427,40 @@ envio de reloj
 
     setTimeout("mueveReloj()",1000)
   }
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function(){
+
+      var d=new Date();
+      var dia=new Array(7);              
+      dia[0]=7;
+      dia[1]=1;
+      dia[2]=2;
+      dia[3]=3;
+      dia[4]=4;
+      dia[5]=5;
+      dia[6]=6;
+
+     // document.dia_semana.value = dia[d.getDay()];
+      //var dia_seman = dia[d.getDay()];
+      var asigna = dia[d.getDay()];
+      //document.getElementById(dia_semana);
+      //alert("dia"+asigna);
+      //asigna.value=dia[d.getDay()];
+            //$("#dia_semana").val(dia[d.getDay]);
+
+      $('#btn_horario').click(function(){
+        $.ajax({
+            url: 'prueba_horario.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });  
+
+   //document.write("Hoy es : "+ dia_semana);
+});
 </script>
 <!--
 finaliza el envio de reloj
