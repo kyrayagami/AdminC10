@@ -130,7 +130,7 @@ include('conexion2.php');
 
 
   <script type="text/javascript"> 
-  /* 
+  
  $(document).ready(function(){
 //semana 
 
@@ -193,7 +193,7 @@ include('conexion2.php');
 
 //
     });
-*/
+
   </script>
   <script type="text/javascript">  
       function validar(){
