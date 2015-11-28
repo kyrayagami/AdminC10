@@ -9,6 +9,7 @@ if($_POST)
 }  
 */
 ?>
+<?php include ('verificar_sesion.php');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,7 +195,9 @@ if($_POST)
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <form action="destruir.php" method="post">
+                    <input type="submit" class="btn btn-default btn-flat" value="Salir">
+                  </form>
                 </div>
               </li>
             </ul>
