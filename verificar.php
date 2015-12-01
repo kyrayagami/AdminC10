@@ -34,7 +34,7 @@ if(isset($_POST['usuario_n']) && !empty($_POST['usuario_n'])&&
 	{
     $sel3=mysql_query("SELECT usuario_n FROM usuarios WHERE usuario_n='$_POST[usuario_n]'",$con);
     $sesion3=mysql_fetch_array($sel3);
-    $sel4=mysql_query("SELECT correo FROM usuarios WHERE usuario_n='$_POST[usuario_n'",$con);
+    $sel4=mysql_query("SELECT correo FROM usuarios WHERE usuario_n='$_POST[usuario_n]'",$con);
     $sesion4=mysql_fetch_array($sel4);
     $_SESSION['nom']=sel3;
     $_SESSION['correo']=sel4;

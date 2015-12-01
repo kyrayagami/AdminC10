@@ -11,14 +11,15 @@ if($statusConexion){
 				case 'nuevo':
 				// varificar antes si no hay un horario similar	
 				// validar que hora de termino sea mayor a hora de inicio
+
 						$hora_inicio = str_replace(":", "",$_POST["hora"]);
 						$hora_termino = str_replace(":", "",$_POST["horaTermino"]);
 						if($horaTermino>$hora_inicio){
-							//CONSUL	
+							//CONSULta							
 							$hora_inicio = $_POST["hora"];
-							$hora_termino = $_POST["horaTermino"];
-							$verifica = validacionhoraHorarios($conex,$hora_inicio,$hora_termino);
-							if($verifica!=''){
+							$hora_termino = $_POST["horaTermino"];							
+							$verifica = validacionhoraHorarios($conex,$dia,$hora_inicio,$hora_termino);
+							if($verifica=='no'){
 								$consulta=mysql_query("
 									insert into horario
 									(dia,id_programa,hora_inicio,hora_termino,tipo,descripcion_h)
@@ -38,8 +39,13 @@ if($statusConexion){
 									$mensaje="Error al realizar la insercion del registro";
 								}
 							}
+							else{
+									$respuesta="DUPLICIDAD";
+									$mensaje="Error al tratar de ingresar registros con la hora especificada";
+							}
 						}						
 					break;	
+					/*
 				case 'editar':
 						$consulta=mysql_query("
 							update horario set							
@@ -58,7 +64,7 @@ if($statusConexion){
 							$respuesta="BAD";
 							$mensaje="Error al realizar la actualizacion del registro";
 						}
-					break;			
+					break;	*/		
 				case 'eliminar':
 						$consulta=mysql_query("delete from horario 
 							where id=".$_POST['id_horario'],$conex);

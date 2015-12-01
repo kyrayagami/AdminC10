@@ -111,7 +111,7 @@
 //final del agregado
       $('#btn_adm_horario').click(function(){
         $.ajax({
-          url: 'horario_administrar.php',
+          url: 'horario_administrar2.php',
           success: function(data) {
             $('#div_dinamico').html(data);
           } 
@@ -169,9 +169,9 @@
               <?php
 
              
-              print_r($_SESSION['nom']) ;
+              //print_r($_SESSION['nom']) ;
               ?>              
-            <span class="hidden-xs">  echo $_SESSION['nom'];</span>
+            <span class="hidden-xs"> <?php //echo $_SESSION['nom']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -180,7 +180,7 @@
               
                 <p>
                  
-                  <small> echo $_SESSION['correo']; </small>
+                  <small> <?php //echo $_SESSION['correo']; ?></small>
                 </p>
               </li>                            
               <!-- Menu Footer-->

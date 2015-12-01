@@ -26,13 +26,65 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros de horarios en este dia</td>
 		</tr>';
 	}
 	//$salida = array($M,$T,$N);	
 	return $salida;
 }
 function validacionhoraHorarios($conexion,$dia,$hora_inicio,$hora_termino){
+	$hay_registro='no';
+// valida que NO SE PUEDAN meter un nuevo horaro entre el rango horario ya creado
+	$consulta=mysql_query("SELECT *  FROM horario WHERE dia =".$dia."
+		AND hora_inicio < '".$hora_inicio."' AND hora_termino > '".$hora_termino."'");
+		if (mysql_num_rows($consulta)>0){					
+			$hay_registro='si';
+		}
+		else{
+			$hay_registro='no';
+		}
+
+// valida que no se registre un horario con hora inicio antes y la hora de termino 
+//este dentro del rango de otro horario ya registrado
+	$consulta=mysql_query("SELECT *  FROM horario WHERE dia =".$dia."
+		AND hora_inicio BETWEEN '".$hora_inicio."' AND '".$hora_termino."'");
+	// obtenemos la fila y se tiene que comparar la hora de termino del nuevo horario con la fecha de inicio de la fila obtenida
+		if (mysql_num_rows($consulta)>0){
+			while ($dato=mysql_fetch_array($consulta)){
+				if($hora_termino ==  $dato["hora_inicio"]){
+					$hay_registro='no';
+				}else{
+					$hay_registro='si';
+				}				
+			}		
+		}
+		else{
+			$hay_registro='no';
+		}
+
+// valida que no se registren horarios con hora inicio con menos hora y la hora de termino despues de algun horario registrado en la tabla de horario
+	$consulta=mysql_query("SELECT *  FROM horario WHERE dia =".$dia."
+		AND hora_termino BETWEEN '".$hora_inicio."' AND '".$hora_termino."'");
+		// obtenemos la fila y se tiene que comparar la hora de inicio del nuevo horario con la fecha de termino de la fila obtenida
+		if (mysql_num_rows($consulta)>0){
+			while ($dato=mysql_fetch_array($consulta)){
+				if($hora_inicio ==  $dato["hora_termino"]){
+					$hay_registro='no';
+				}else{
+					$hay_registro='si';
+				}				
+			}		
+		}
+		else{
+			$hay_registro='no';
+		}
+		return $hay_registro;
+// valida que no se incruste un horario con hora Inicio un poco mas tarde y que su hora Termino termine un poco mas tarde que algun horario que exista en la tabla horario
+	/*$consulta=mysql_query("SELECT * FROM horario WHERE dia =1
+		AND hora_inicio <  '12:15:00'
+		AND hora_termino between   '12:15:00'
+		AND '13:45:00'	");*/
+	// obtenemos la fila y se tiene que comparar la hora de inicio del nuevo horario con la hora_termino de la fila obtenida
 	
 }
 function consultHorarios2($conexion){	

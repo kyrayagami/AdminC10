@@ -116,7 +116,7 @@ $(function(){
 	});	
 	$('#frm_horario_update').on('submit',function(){		
 		var datos=$(this).serialize();
-		alert(datos);		
+		//alert(datos);		
 		$.ajax({
 			type:'POST',
 			dataType:"json",
@@ -128,7 +128,7 @@ $(function(){
 			},
 			success: function(response){//ACCION QUE SUCEDE DESPUES DE REALIZAR CORRECTAMENTE LA PETCION EL CUAL NOS TRAE UNA RESPUESTA
 				if(response.respuesta=="DONE"){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE
-					$("#lis_horario").html(response.contenido);//cargo los registros que devuelve ajax
+					//$("#lis_horario").html(response.contenido);//cargo los registros que devuelve ajax
 					$('#div_frm_h2').dialog('close');//CERRAMOS EL FORM
 					$('#btn_h2').show();
 					$('#loader_h2').hide();//OCULTAMOS EL LOADER
