@@ -1135,8 +1135,4 @@ $consulta=mysql_query("SELECT *
 	$salida = array($M,$T,$N);	
 	return $salida;
 }
-
-
-
-
 ?>

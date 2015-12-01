@@ -1,14 +1,3 @@
-<?php
-/*
-if($_POST)
-{
-  $nombre = $_POST['nombre'];  
-  $sql="INSERT INTO programas_prueba (nombre) VALUES ('$nombre')";
-  mysql_query($sql, $conexion) or die(mysql_error()); 
-  $_POST['nombre']= '';
-}  
-*/
-?>
 <?php include ('verificar_sesion.php');?>
 <!DOCTYPE html>
 <html>
@@ -177,18 +166,23 @@ if($_POST)
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <?php
+
+             
+              print_r($_SESSION['nom']) ;
+              ?>              
+            <span class="hidden-xs">  echo $_SESSION['nom'];</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+              
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                 
+                  <small> echo $_SESSION['correo']; </small>
                 </p>
-              </li>                                          
+              </li>                            
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
