@@ -9,24 +9,68 @@ if($statusConexion){
 	if($_POST!="" && !empty($_POST)){
 		switch ($_POST['Op']) {
 				case 'nuevo':
+				// varificar antes si no hay un horario similar	
+				// validar que hora de termino sea mayor a hora de inicio
+						$hora_inicio = str_replace(":", "",$_POST["hora"]);
+						$hora_termino = str_replace(":", "",$_POST["horaTermino"]);
+						if($horaTermino>$hora_inicio){
+							//CONSUL	
+							$hora_inicio = $_POST["hora"];
+							$hora_termino = $_POST["horaTermino"];
+							$verifica = validacionhoraHorarios($conex,$hora_inicio,$hora_termino);
+							if($verifica!=''){
+								$consulta=mysql_query("
+									insert into horario
+									(dia,id_programa,hora_inicio,hora_termino,tipo,descripcion_h)
+									values(".$_POST['dia'].",
+									".$_POST['id_programa'].",
+									'".$_POST['hora']."',
+									'".$_POST['horaTermino']."',
+									'".$_POST['tipo']."',
+									'".$_POST['descripcion']."')"
+								,$conex);
+								if(mysql_affected_rows()>0){
+									$mensaje="Registro Insertado";
+									//$ContenidoHTML=consultHorarios2($conex);					
+								}
+								else{
+									$respuesta="BAD";
+									$mensaje="Error al realizar la insercion del registro";
+								}
+							}
+						}						
+					break;	
+				case 'editar':
 						$consulta=mysql_query("
-							insert into horario
-							(dia,id_programa,hora_inicio,duracion,descripcion) 
-							values(".$_POST['dia'].",
-								".$_POST['id_programa'].",
-								'".$_POST['hora']."',
-								'".$_POST['duracion']."',
-								'".$_POST['descripcion']."')"
+							update horario set							
+							programa='".$_POST['estatus']."',
+							hora_inicio='".$_POST['hora_up']."',
+							hora_termino='".$_POST['horaTermino_up']."',
+							tipo='".$_POST['tipo_up']."',
+							descripcion_h='".$_POST['descripcion_up']."',
+							where id=".$_POST['id_horario']
 							,$conex);
 						if(mysql_affected_rows()>0){
-							$mensaje="Registro Insertado";
-							$ContenidoHTML=consultHorarios2($conex);					
+							$mensaje="Registro Actualizado";
+							//$ContenidoHTML=consultaProgramas($conex);					
 						}
 						else{
 							$respuesta="BAD";
-							$mensaje="Error al realizar la insercion del registro";
+							$mensaje="Error al realizar la actualizacion del registro";
 						}
-					break;	
+					break;			
+				case 'eliminar':
+						$consulta=mysql_query("delete from horario 
+							where id=".$_POST['id_horario'],$conex);
+						if(mysql_affected_rows()>0){
+							$mensaje="Registro Eliminado";
+							$ContenidoHTML=consultaProgramas($conex);	
+						}
+						else{
+							$respuesta="BAD";
+							$mensaje="Error al Eliminar Registro";	
+						}
+					break;
 			}			
 	}
 	else{

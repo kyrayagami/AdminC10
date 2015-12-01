@@ -1,13 +1,46 @@
 <?php
 $statusConexion=true;
+function consult_horario_por_dia($conexion,$dia){
+$salida='';
+$consulta=mysql_query("SELECT * 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =  '".$dia."'
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.dia, horario.hora_inicio ASC");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{	 			 			
+	 		$salida.='<tr>	 					
+	 					<td> '.$dato["id"].'</td>
+	 					<td> '.$dato["hora_inicio"].'</td>
+	 					<td> '.$dato["hora_termino"].'</td>	 					 	
+	 					<td> '.$dato["nombre"].'</td>
+	 					<td> '.$dato["descripcion_h"].'</td>
+	 					<td> '.$dato["tipo"].'</td>
+	 					<td> <a class="btn btn-danger">Eliminar</a></td>
+	 		</tr>';
+		}		
+	}
+	else
+	{
+		$salida='<tr id="sinDatos">
+		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		</tr>';
+	}
+	//$salida = array($M,$T,$N);	
+	return $salida;
+}
+function validacionhoraHorarios($conexion,$dia,$hora_inicio,$hora_termino){
+	
+}
 function consultHorarios2($conexion){	
-/*
-$acu=0;
+/*$acu=0;
 $salida='';
 $M='';
 $T='';
-$N='';
-*/
+$N='';*/
 $lu='';
 $ma='';
 $mi='';
@@ -278,8 +311,7 @@ function consultaProgramas($conexion){
 					<td>'.$dato["nombre"].'</td>					
 					<td>'.$dato["descripcion"].'</td>
 					<td>'.$dato["correo"].'</td>
-					<td> <span class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'
-					</span></td>
+					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
 					<td><a class="btn btn-info">Editar</a>
 					<a class="btn btn-danger">Eliminar</a></td>
 				</tr>
@@ -323,12 +355,12 @@ function consultaCategoria($conexion){
 function returnStatus($palabra){
 	switch($palabra){
 		case "ACTIVO":
-			//$status="btn-success";
-			$status="label label-success";
+			$status="btn-success";
+			//$status="label label-success";
 		break;
 		case "INACTIVO":
-			//$status="btn-warning";
-			$status="label label-warning";
+			$status="btn-warning";
+			//$status="label label-warning";
 		break;
 		/*
 		case "Cancelado":
