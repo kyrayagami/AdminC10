@@ -165,22 +165,30 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <?php
-
-             
-              //print_r($_SESSION['nom']) ;
-              ?>              
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">            
             <span class="hidden-xs"> <?php //echo $_SESSION['nom']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-              
                 <p>
+              <?php 
+          include("conexion3.php");
+          $con = mysql_connect($host,$user,$pw) or die("Problemas al conectar");
+          mysql_select_db($db,$con) or die("Problemas con DB");
+          $result = mysql_query("SELECT usuario_n,correo FROM usuarios WHERE usuario_n='machan'", $con); 
+          if ($row = mysql_fetch_array($result)){  
+          do { 
+          echo "<small>".$row["usuario_n"]."</small> \n"; 
+          echo "<small>".$row["correo"]."</small> \n"; 
+          } while ($row = mysql_fetch_array($result)); 
+          echo "</table> \n"; 
+          } else { 
+          echo "¡ No se ha encontrado ningún registro !"; 
+          } 
+          ?> 
                  
-                  <small> <?php //echo $_SESSION['correo']; ?></small>
                 </p>
               </li>                            
               <!-- Menu Footer-->
