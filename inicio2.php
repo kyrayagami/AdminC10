@@ -170,38 +170,15 @@
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                <p>
-              <?php 
-          include("conexion3.php");
-          $con = mysql_connect($host,$user,$pw) or die("Problemas al conectar");
-          mysql_select_db($db,$con) or die("Problemas con DB");
-          $result = mysql_query("SELECT usuario_n,correo FROM usuarios WHERE usuario_n='machan'", $con); 
-          if ($row = mysql_fetch_array($result)){  
-          do { 
-          echo "<small>".$row["usuario_n"]."</small> \n"; 
-          echo "<small>".$row["correo"]."</small> \n"; 
-          } while ($row = mysql_fetch_array($result)); 
-          echo "</table> \n"; 
-          } else { 
-          echo "¡ No se ha encontrado ningún registro !"; 
-          } 
-          ?> 
-                 
-                </p>
-              </li>                            
+                          
               <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
+
+                <div >
                   <form action="destruir.php" method="post">
                     <input type="submit" class="btn btn-default btn-flat" value="Salir">
                   </form>
                 </div>
-              </li>
+
             </ul>
           </li>          
         </ul>
