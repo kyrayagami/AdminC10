@@ -111,7 +111,7 @@
 //final del agregado
       $('#btn_adm_horario').click(function(){
         $.ajax({
-          url: 'horario_administrar2.php',
+          url: 'administrar_horario.php',
           success: function(data) {
             $('#div_dinamico').html(data);
           } 
@@ -344,7 +344,9 @@
   </div>
   -->  
   <!-- Content Wrapper. Contains page content -->
+  <!--
   <input type="text" name="dia_semana" id="dia_semana" value="">
+  -->
   <div class="content-wrapper" name="div_dinamico" id="div_dinamico">
     <!-- Content Header (Page header) -->
     <section class="content-header">

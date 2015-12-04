@@ -33,12 +33,13 @@ $consulta=mysql_query("SELECT *
 	return $salida;
 }
 function validacionhoraHorarios($conexion,$dia,$hora_inicio,$hora_termino){
-	$hay_registro='no';
+	$hay_registro='';
 // valida que NO SE PUEDAN meter un nuevo horaro entre el rango horario ya creado
 	$consulta=mysql_query("SELECT *  FROM horario WHERE dia =".$dia."
 		AND hora_inicio < '".$hora_inicio."' AND hora_termino > '".$hora_termino."'");
 		if (mysql_num_rows($consulta)>0){					
 			$hay_registro='si';
+			return $hay_registro;
 		}
 		else{
 			$hay_registro='no';
@@ -46,15 +47,16 @@ function validacionhoraHorarios($conexion,$dia,$hora_inicio,$hora_termino){
 
 // valida que no se registre un horario con hora inicio antes y la hora de termino 
 //este dentro del rango de otro horario ya registrado
-	$consulta=mysql_query("SELECT *  FROM horario WHERE dia =".$dia."
+	$consulta2=mysql_query("SELECT *  FROM horario WHERE dia =".$dia."
 		AND hora_inicio BETWEEN '".$hora_inicio."' AND '".$hora_termino."'");
 	// obtenemos la fila y se tiene que comparar la hora de termino del nuevo horario con la fecha de inicio de la fila obtenida
-		if (mysql_num_rows($consulta)>0){
-			while ($dato=mysql_fetch_array($consulta)){
+		if (mysql_num_rows($consulta2)>0){
+			while ($dato=mysql_fetch_array($consulta2)){
 				if($hora_termino ==  $dato["hora_inicio"]){
 					$hay_registro='no';
 				}else{
 					$hay_registro='si';
+					return $hay_registro;
 				}				
 			}		
 		}
@@ -63,15 +65,16 @@ function validacionhoraHorarios($conexion,$dia,$hora_inicio,$hora_termino){
 		}
 
 // valida que no se registren horarios con hora inicio con menos hora y la hora de termino despues de algun horario registrado en la tabla de horario
-	$consulta=mysql_query("SELECT *  FROM horario WHERE dia =".$dia."
+	$consulta3=mysql_query("SELECT *  FROM horario WHERE dia =".$dia."
 		AND hora_termino BETWEEN '".$hora_inicio."' AND '".$hora_termino."'");
 		// obtenemos la fila y se tiene que comparar la hora de inicio del nuevo horario con la fecha de termino de la fila obtenida
-		if (mysql_num_rows($consulta)>0){
-			while ($dato=mysql_fetch_array($consulta)){
+		if (mysql_num_rows($consulta3)>0){
+			while ($dato=mysql_fetch_array($consulta3)){
 				if($hora_inicio ==  $dato["hora_termino"]){
 					$hay_registro='no';
 				}else{
 					$hay_registro='si';
+					return $hay_registro;
 				}				
 			}		
 		}
@@ -93,13 +96,7 @@ $salida='';
 $M='';
 $T='';
 $N='';*/
-$lu='';
-$ma='';
-$mi='';
-$ju='';
-$vi='';
-$sa='';
-$do='';
+
 $dia=1;
 $i=0;
 $j=0;
@@ -231,9 +228,7 @@ function obtenerDias($conexion){
 	if(mysql_num_rows($sql)>0){
 		while ($dato=mysql_fetch_array($sql))
 		{
-			$resul.='
-			<option value="'.$dato["id_dia"].'"> '.$dato["dia"].' </option>
-			';
+			$resul.='<option value="'.$dato["id_dia"].'"> '.$dato["dia"].'</option>';
 		}
 	}
 	return $resul;
@@ -247,6 +242,16 @@ function obtenerProgramas($conexion){
 		}		
 	}
 	return $resultado;
+}
+function obtenerCategoria($conexion){
+	$result='';
+	$sql=mysql_query("select * from categoria");
+	if(mysql_num_rows($sql)>0){
+		while ($dato=mysql_fetch_array($sql)){
+			$result.='<option value="'.$dato["id_categoria"].'">'.$dato["categoria"].'</option>';
+		}		
+	}
+	return $result;
 }
 
 /*function consultaHorarios($conexion){
@@ -352,7 +357,8 @@ function consultaProgramas($conexion){
 	//$consulta=mysql_query('select id,nombre,edad,telefono,ciudad,status from user');
 	//$consulta = mysql_query('SELECT conductores.*, conductores_imagenes.*, imagenes.* FROM conductores, conductores_imagenes, imagenes WHERE conductores.id_conductor = conductores_imagenes.id_conductor and imagenes.id_imagen = conductores_imagenes.id_imagen ORDER BY conductor');
 	//$consulta = "SELECT programas.*, categoria.*, productores.* FROM programas, categoria, productores WHERE programas.id_categoria = categoria.id_categoria and productores.id_productor = programas.id_productor order by programas.nombre";
-	$consulta = mysql_query("select * from programas");
+	$consulta = mysql_query("select * from programas LEFT join 
+		categoria on programas.id_categoria=categoria.id_categoria");
 	//$conductores = mysql_query($sql, $conexion) or die(mysql_error());  
 	 //Validamos si hay o no registros
 	 if(mysql_num_rows($consulta)>0){
@@ -363,6 +369,7 @@ function consultaProgramas($conexion){
 					<td>'.$dato["nombre"].'</td>					
 					<td>'.$dato["descripcion"].'</td>
 					<td>'.$dato["correo"].'</td>
+					<td>'.$dato["categoria"].'</td>
 					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
 					<td><a class="btn btn-info">Editar</a>
 					<a class="btn btn-danger">Eliminar</a></td>
@@ -567,9 +574,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -588,9 +595,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -609,9 +616,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -665,9 +672,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -686,9 +693,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -707,9 +714,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -763,9 +770,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -784,9 +791,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -805,9 +812,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -861,9 +868,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -882,9 +889,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -903,9 +910,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -958,9 +965,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -979,9 +986,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -1000,9 +1007,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -1056,9 +1063,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -1077,9 +1084,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -1098,9 +1105,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -1154,9 +1161,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -1175,9 +1182,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -1196,9 +1203,9 @@ $consulta=mysql_query("SELECT *
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>

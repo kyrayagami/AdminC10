@@ -34,6 +34,7 @@ $(function(){
 		$('#div_frm').dialog('open');
 		tipo='nuevo';
 		$('#frm_programa input[type=text]').val('');
+		//$("#dia").find('option').removeAttr("selected");
 		//$('#status_user option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT		
 	});
 	$('#loader').hide();
@@ -73,17 +74,28 @@ $(function(){
 	});
 
 	$("#lis_programas").on("click","a",function(){
-		var pos=$(this).parent().parent();
-		$("#frm_edit_progra input[type=text],select").each(function(index){
+		var pos=$(this).parent().parent();		
+		
+		$("#frm_edit_progra input[type=text],input[type=email],select").each(function(index){
 			$(this).val($(pos).children("td:eq("+index+")").text());
 			//var dat
 			//alert("dat : "+index);
 			//alert(" .. "+ $(pos).children("td:eq("+index+")").text());
 		});
+		var valor = $(pos).children("td:eq(4)").text();
+		//var combo = $("#id_categoria").length();
+		//var combo = document.forms["tu_formulario"].tuSelect;
+   		var cantidad = $("#id_categoria option").length;
+   		alert("Cantidad : "+cantidad + "valor a buscar : "+valor);
+   		for (i = 0; i < cantidad; i++) {
+      		if ($("#id_categoria option")[i].text== valor) {
+         		$("#id_categoria option")[i].selected = true;
+      		}
+   		}
 		if($(this).text()=="Editar"){
 			//$("#opcion").val("editar");
-			tipo='editar';
-			$("#div_frm2").dialog("open");
+			tipo='editar';			
+			$("#div_frm2").dialog("open");			
 		}
 		// aqui faltaria agregar si se va a desactivar o algo asi
 		else{

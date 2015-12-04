@@ -73,7 +73,7 @@ include("conexion2.php");
             </div>            
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">            
-              <table id="tcategoria" class="table table-condensed">          
+              <table id="tcategoria" class="table table-bordered">          
                 <thead>
                   <tr>
                       <th>ID</th>                    

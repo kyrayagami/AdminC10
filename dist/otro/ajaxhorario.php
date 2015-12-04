@@ -11,14 +11,17 @@ if($statusConexion){
 				case 'nuevo':
 				// varificar antes si no hay un horario similar	
 				// validar que hora de termino sea mayor a hora de inicio
-
 						$hora_inicio = str_replace(":", "",$_POST["hora"]);
 						$hora_termino = str_replace(":", "",$_POST["horaTermino"]);
-						if($horaTermino>$hora_inicio){
+						//$ContenidoHTML="hora inicio = ".$_POST["hora"]." -- hora termino ".$hora_termino;
+						if($hora_termino>$hora_inicio){
 							//CONSULta							
 							$hora_inicio = $_POST["hora"];
-							$hora_termino = $_POST["horaTermino"];							
+							$hora_termino = $_POST["horaTermino"];
+							$dia= $_POST["dia"];
+							//$ContenidoHTML="hora inicio = ".$_POST["hora"]." -- hora termino ".$hora_termino;
 							$verifica = validacionhoraHorarios($conex,$dia,$hora_inicio,$hora_termino);
+							$ContenidoHTML=$verifica;
 							if($verifica=='no'){
 								$consulta=mysql_query("
 									insert into horario
@@ -70,7 +73,7 @@ if($statusConexion){
 							where id=".$_POST['id_horario'],$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Eliminado";
-							$ContenidoHTML=consultaProgramas($conex);	
+							//$ContenidoHTML=consultaProgramas($conex);	
 						}
 						else{
 							$respuesta="BAD";

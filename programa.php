@@ -3,7 +3,8 @@ error_reporting(0);
 include("conexion2.php");
    $contenido="";   
     if($statusConexion==true){
-      $contenido=consultaProgramas($conex);    
+      $contenido=consultaProgramas($conex); 
+      $catego = obtenerCategoria($conex);
   }
 ?>    
     <section class="content-header">
@@ -12,7 +13,7 @@ include("conexion2.php");
       </h1>
       <ol class="breadcrumb">
         <li><a><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a>Programas</a></li>        
+        <li><a>Programas</a></li>
       </ol>
     </section>
     <!-- Main content -->    
@@ -47,14 +48,20 @@ include("conexion2.php");
               <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion" required/>
               <br>
               <label>Correo</label><br>   
-              <input type="text" id="correo" name="correo" placeholder="Correo" required />
+              <input type="email" id="correo" name="correo" placeholder="Correo" required />
+              <br>
+              <label>Categoria</label><br>         
+              <select name="id_categoria" id="id_categoria" required>
+                    <option value="">Seleccione una Categoria</option>
+                    <?php echo $catego;?>                    
+              </select>
               <br>
               <label>Estatus</label><br>         
               <select name="estatus" id="estatus" required >
                     <option value="">Seleccione un Estatus</option>
                     <option value="ACTIVO">Activo</option>
                     <option value="INACTIVO">Inactivo</option>                    
-              </select>
+              </select>              
             </fieldset>
             <fieldset id="btn2">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
@@ -87,14 +94,15 @@ include("conexion2.php");
             </div>            
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">            
-              <table id="tprogramas" class="table table-condensed">          
+              <table id="tprogramas" class="table table-bordered">          
                 <thead>
                   <tr>
                       <th>ID</th>                    
                       <th>Nombre</th>                      
                       <th>Descripcion</th>
                       <th>Correo</th>
-                      <th>Estatus</th>              
+                      <th>Categoria</th> 
+                      <th>Estatus</th>                              
                       <th>Acciones</th> 
                   </tr>  
                 </thead>              

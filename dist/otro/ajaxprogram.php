@@ -31,7 +31,8 @@ if($statusConexion){
 							nombre='".$_POST['nombre']."',
 							estatus='".$_POST['estatus']."',
 							descripcion='".$_POST['descripcion']."',
-							correo='".$_POST['correo']."'
+							correo='".$_POST['correo']."',
+							id_categoria='".$_POST['id_categoria']."'
 							where id_programa=".$_POST['id_programa']
 							,$conex);
 						if(mysql_affected_rows()>0){

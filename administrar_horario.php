@@ -22,7 +22,7 @@ include("conexion2.php");
 ?>    
     <section class="content-header">
       <h1>
-       Horario Administracion
+       Horario Administracion modi
       </h1>
       <ol class="breadcrumb">
         <li><a><i class="fa fa-dashboard"></i> Home</a></li>
@@ -76,7 +76,7 @@ include("conexion2.php");
             <fieldset>
               <label>ID</label>
               <br>
-              <input type="text" id="id_horario" name="id_horario" placeholder="ID" readonly/><br>
+              <input type="text" id="id_horario" name="id_horario" readonly/><br>
               <!--
               <label>Hora Inicio de la programación</label><br>
               <input type="time" id="hora_up" name="hora_up" value="" /><br>
@@ -139,7 +139,7 @@ include("conexion2.php");
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1">
-                <table id="thorarioLunes" class="table table-bordered">
+                <table class="table table-bordered">
                   <thead>
                     <tr>                      
                       <th>ID</th>
@@ -157,53 +157,52 @@ include("conexion2.php");
                 </table>
               </div>              
               <div class="tab-pane" id="tab_2">
-                <table class="table table-bordered">
+               <table class="table table-bordered">
                   <thead>
-                    <tr>
+                    <tr>                      
                       <th>ID</th>
                       <th style="width: 100px">Hora Inicio</th>
                       <th>Hora Termino</th>
                       <th>Programa</th> 
                       <th>Descripcion</th>  
                       <th style="width: 10px">Estado</th>                    
-                      <th>Acciones</th>                      
+                      <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>                 
-                    <?php echo $M; ?>                    
+                    <?php echo $M;?>
                   </tbody>
-                </table>
-                
+                </table>                
               </div>              
               <div class="tab-pane" id="tab_3">
                 <table class="table table-bordered">
                   <thead>
-                    <tr>
+                    <tr>                      
                       <th>ID</th>
                       <th style="width: 100px">Hora Inicio</th>
                       <th>Hora Termino</th>
                       <th>Programa</th> 
                       <th>Descripcion</th>  
                       <th style="width: 10px">Estado</th>                    
-                      <th>Acciones</th>                      
+                      <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>                 
-                    <?php echo $Mi; ?>                    
+                    <?php echo $Mi;?>
                   </tbody>
-                </table>
+                </table>                
               </div>
               <div class="tab-pane" id="tab_4">
                 <table class="table table-bordered">
                   <thead>
-                    <tr>
+                    <tr>                      
                       <th>ID</th>
                       <th style="width: 100px">Hora Inicio</th>
                       <th>Hora Termino</th>
                       <th>Programa</th> 
                       <th>Descripcion</th>  
                       <th style="width: 10px">Estado</th>                    
-                      <th>Acciones</th>                      
+                      <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>                 
@@ -230,10 +229,40 @@ include("conexion2.php");
                 </table>
               </div>              
               <div class="tab-pane" id="tab_6">
-                
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th style="width: 100px">Hora Inicio</th>
+                      <th>Hora Termino</th>
+                      <th>Programa</th> 
+                      <th>Descripcion</th>  
+                      <th style="width: 10px">Estado</th>                    
+                      <th>Acciones</th>                      
+                    </tr>
+                  </thead>
+                  <tbody>                 
+                    <?php echo $S; ?>
+                  </tbody>
+                </table>                
               </div>
               <div class="tab-pane" id="tab_7">
-                
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th style="width: 100px">Hora Inicio</th>
+                      <th>Hora Termino</th>
+                      <th>Programa</th> 
+                      <th>Descripcion</th>  
+                      <th style="width: 10px">Estado</th>                    
+                      <th>Acciones</th>                      
+                    </tr>
+                  </thead>
+                  <tbody>                 
+                    <?php echo $D; ?>
+                  </tbody>
+                </table>
               </div>
               <!-- /.tab-pane -->
             </div>
@@ -252,5 +281,5 @@ include("conexion2.php");
           var x = document.getElementById("hora_parse").value;
           document.getElementById("hora_up").value = x;
         }
-    </script>       
-    <script type="text/javascript" src="dist/js/horario_admin.js"></script>
+    </script>
+    <script type="text/javascript" src="dist/js/admin_horario.js"></script>
