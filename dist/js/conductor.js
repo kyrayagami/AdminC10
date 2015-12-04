@@ -3,8 +3,8 @@ $(function(){
 	$('#div_frm').dialog({		
 		autoOpen:false,
 		modal:true,
-		title:'Programa',
-		width:300,
+		title:'Conductor',
+		width:350,
 		height:'auto',
 		show:{
 			effect:"clip",
@@ -18,7 +18,7 @@ $(function(){
 	$('#div_frm2').dialog({		
 		autoOpen:false,
 		modal:true,
-		title:'Editar Programa',
+		title:'Editar Conductor',
 		width:300,
 		height:'auto',
 		show:{
@@ -33,19 +33,20 @@ $(function(){
 	$('#agregar').on('click',function(){
 		$('#div_frm').dialog('open');
 		tipo='nuevo';
-		$('#frm_programa input[type=text]').val('');
+		$('#frm_conductor input[type=text]').val('');
+		$('#frm_conductor input[type=email]').val('');		
 		//$("#dia").find('option').removeAttr("selected");
 		//$('#status_user option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT		
 	});
 	$('#loader').hide();
 	$('#loader2').hide();
-	$('#frm_programa').on('submit',function(){		
+	$('#frm_conductor').on('submit',function(){		
 		var datos=$(this).serialize();
 		//alert(""+datos);
 		$.ajax({
 			type:'POST',
 			dataType:"json",
-			url:"dist/otro/ajaxprogram.php",
+			url:"dist/otro/ajaxconductor.php",
 			data: 'Op='+tipo+'&'+datos,//'Op='+ $("#opcion").val() +'&'+datos,
 			beforeSend: function(){
 				$('#btn').hide();
@@ -53,7 +54,7 @@ $(function(){
 			},
 			success: function(response){//ACCION QUE SUCEDE DESPUES DE REALIZAR CORRECTAMENTE LA PETCION EL CUAL NOS TRAE UNA RESPUESTA
 				if(response.respuesta=="DONE"){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE
-					$("#lis_programas").html(response.contenido);//cargo los registros que devuelve ajax
+					$("#lis_conductores").html(response.contenido);//cargo los registros que devuelve ajax
 					$('#div_frm').dialog('close');//CERRAMOS EL FORM
 					$('#btn').show();
 					$('#loader').hide();//OCULTAMOS EL LOADER
@@ -73,10 +74,10 @@ $(function(){
 		return false;//RETORNAMOS FALSE PARA QUE NO HAGA UN RELOAD EN LA PAGINA
 	});
 
-	$("#lis_programas").on("click","a",function(){
+	$("#lis_conductores").on("click","a",function(){
 		var pos=$(this).parent().parent();		
 		
-		$("#frm_edit_progra input[type=text],input[type=email],select").each(function(index){
+		$("#frm_edit_conductor input[type=text],input[type=email],select").each(function(index){
 			$(this).val($(pos).children("td:eq("+index+")").text());
 			//var dat
 			//alert("dat : "+index);
@@ -86,7 +87,7 @@ $(function(){
 		//var combo = $("#id_categoria").length();
 		//var combo = document.forms["tu_formulario"].tuSelect;
    		var cantidad = $("#id_categoria option").length;
-   		//alert("Cantidad : "+cantidad + "valor a buscar : "+valor);
+   		alert("Cantidad : "+cantidad + "valor a buscar : "+valor);
    		for (i = 0; i < cantidad; i++) {
       		if ($("#id_categoria option")[i].text== valor) {
          		$("#id_categoria option")[i].selected = true;
@@ -102,18 +103,18 @@ $(function(){
 			if(confirm("¿Seguro de eliminar el Registro:"+$(pos).children("td:eq(1)").text()+"?")){
 				//$("#opcion").val("eliminar");
 				tipo='eliminar';
-				$("#frm_edit_progra").submit();
+				$("#frm_edit_conductor").submit();
 			}
 		}
 	});
 
-	$('#frm_edit_progra').on('submit',function(){		
+	$('#frm_edit_conductor').on('submit',function(){		
 		var datos=$(this).serialize();
 		//alert("tipo es = "+tipo+" datos: "+datos);
 		$.ajax({
 			type:'POST',
 			dataType:"json",
-			url:"dist/otro/ajaxprogram.php",
+			url:"dist/otro/ajaxconductor.php",
 			data: 'Op='+tipo+'&'+datos,//'Op='+ $("#opcion").val() +'&'+datos,
 			beforeSend: function(){
 				$('#btn2').hide();
@@ -121,7 +122,7 @@ $(function(){
 			},
 			success: function(response){//ACCION QUE SUCEDE DESPUES DE REALIZAR CORRECTAMENTE LA PETCION EL CUAL NOS TRAE UNA RESPUESTA
 				if(response.respuesta=="DONE"){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE
-					$("#lis_programas").html(response.contenido);//cargo los registros que devuelve ajax
+					$("#lis_conductores").html(response.contenido);//cargo los registros que devuelve ajax
 					$('#div_frm2').dialog('close');//CERRAMOS EL FORM
 					$('#loader2').hide();//OCULTAMOS EL LOADER										
 					$('#btn2').show();

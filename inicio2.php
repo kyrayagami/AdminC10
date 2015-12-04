@@ -68,7 +68,7 @@
 //agregado nuevo      
       $('#btn_conductor').click(function(){
         $.ajax({
-          url: 'conductor_ajax.php',
+          url: 'conductores.php',
           success: function(data) {
             $('#div_dinamico').html(data);
           } 

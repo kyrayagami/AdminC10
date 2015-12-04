@@ -1,5 +1,32 @@
 <?php
 $statusConexion=true;
+function consultaConductores($conexion){
+	$resultado='';
+	$consult=mysql_query("SELECT * FROM conductores");
+		if (mysql_num_rows($consult)>0)
+		{
+			while ($dato=mysql_fetch_array($consult))
+	 		{	 			 			
+	 			$salida.='<tr>	 					
+	 					<td> '.$dato["id_conductor"].'</td>
+	 					<td> '.$dato["conductor"].'</td>	 							 
+	 					<td> '.$dato["correo"].'</td>
+	 					<td> '.$dato["descripcion_conductor"].'</td>	 					
+	 					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
+	 					<td> <a class="btn btn-info">Editar</a></td>
+	 					<td> <a class="btn btn-danger">Eliminar</a></td>
+	 			</tr>';
+			}		
+		}
+		else
+		{
+			$salida='<tr id="sinDatos">
+			<td colspan="7">No hay Registros de horarios en este dia</td>
+			</tr>';
+		}
+	//$salida = array($M,$T,$N);	
+	return $salida;
+}
 function consult_horario_por_dia($conexion,$dia){
 $salida='';
 $consulta=mysql_query("SELECT * 
