@@ -175,7 +175,7 @@
 
                 <div >
                   <form action="destruir.php" method="post">
-                    <input type="submit" class="btn btn-default btn-flat" value="Salir">
+                    <input type="submit" class="btn btn-block bg-yellow btn-default" value="Salir">
                   </form>
                 </div>
 
