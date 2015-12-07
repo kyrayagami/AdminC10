@@ -4,7 +4,7 @@ $(function(){
 		autoOpen:false,
 		modal:true,
 		title:'Conductor',
-		width:350,
+		width:375,
 		height:'auto',
 		show:{
 			effect:"clip",
@@ -35,19 +35,57 @@ $(function(){
 		tipo='nuevo';
 		$('#frm_conductor input[type=text]').val('');
 		$('#frm_conductor input[type=email]').val('');		
-		//$("#dia").find('option').removeAttr("selected");
+		$('#frm_conductor textarea').val('');
+		$("#estatus").find('option').removeAttr("selected");
+		$("#respuesta").html('');
+		$("#imagen").val('');
 		//$('#status_user option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT		
 	});
 	$('#loader').hide();
 	$('#loader2').hide();
+	$('#imagen').on('change',function(){
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		var formData = new FormData($("#frm_img")[0]);
+		// data: 'ACCION=imagen&'+img,
+		$.ajax({
+			url: "dist/otro/subirImagen.php",
+			type: 'POST',
+			data: formData,
+			contentType: false,
+			processData: false,
+			success: function(respons){//ACCION QUE SUCEDE DESPUES DE REALIZAR CORRECTAMENTE LA PETCION EL CUAL NOS TRAE UNA RESPUESTA				
+				if(respons.respuesta=="DONE"){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE
+					$("#respuesta").html(respons.contenido);
+					//$("#lis_conductores").html(response.contenido);//cargo los registros que devuelve ajax
+					//$('#div_frm').dialog('close');//CERRAMOS EL FORM
+					//$('#btn').show();
+					//$('#loader').hide();//OCULTAMOS EL LOADER					
+				}
+				else{
+					alert("Ocurrio un error en la imagen, intentelo de nuevo . "+respons);
+					//$('#loader').hide();	
+					//$('#btn').show();
+					$("#respuesta").html(respons);
+				}					
+			},
+			error: function(){//SI OCURRE UN ERROR 
+				
+				alert('El servicio no esta disponible intentelo mas tarde');//MENSAJE EN CASO DE ERROR
+				/*
+				$('#loader').hide();//OCULTAMOS EL DIV LOADER
+				$('#btn').show();*/
+			}
+		});
+	});
 	$('#frm_conductor').on('submit',function(){		
 		var datos=$(this).serialize();
-		//alert(""+datos);
+		alert(datos);
 		$.ajax({
 			type:'POST',
 			dataType:"json",
 			url:"dist/otro/ajaxconductor.php",
-			data: 'Op='+tipo+'&'+datos,//'Op='+ $("#opcion").val() +'&'+datos,
+			data: 'ACCION=datos&Op='+tipo+'&'+datos,//'Op='+ $("#opcion").val() +'&'+datos,
 			beforeSend: function(){
 				$('#btn').hide();
 				$('#loader').show();//MOSTRAMOS EL DIV LOADER EL CUAL CONTIENE LA IMAGEN DE CARGA				
@@ -83,16 +121,16 @@ $(function(){
 			//alert("dat : "+index);
 			//alert(" .. "+ $(pos).children("td:eq("+index+")").text());
 		});
-		var valor = $(pos).children("td:eq(4)").text();
+		//var valor = $(pos).children("td:eq(4)").text();
 		//var combo = $("#id_categoria").length();
 		//var combo = document.forms["tu_formulario"].tuSelect;
-   		var cantidad = $("#id_categoria option").length;
+   		/*var cantidad = $("#id_categoria option").length;
    		alert("Cantidad : "+cantidad + "valor a buscar : "+valor);
    		for (i = 0; i < cantidad; i++) {
       		if ($("#id_categoria option")[i].text== valor) {
          		$("#id_categoria option")[i].selected = true;
       		}
-   		}
+   		}*/
 		if($(this).text()=="Editar"){
 			//$("#opcion").val("editar");
 			tipo='editar';			

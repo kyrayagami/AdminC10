@@ -13,8 +13,9 @@ function consultaConductores($conexion){
 	 					<td> '.$dato["correo"].'</td>
 	 					<td> '.$dato["descripcion_conductor"].'</td>	 					
 	 					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
-	 					<td> <a class="btn btn-info">Editar</a></td>
-	 					<td> <a class="btn btn-danger">Eliminar</a></td>
+	 					<td> '.$dato["id_imagen"].'</td>
+	 					<td> <a class="btn btn-info">Editar</a>
+	 					<a class="btn btn-danger">Eliminar</a></td>
 	 			</tr>';
 			}		
 		}

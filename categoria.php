@@ -17,10 +17,7 @@ include("conexion2.php");
     <!-- Main content -->    
     <div id="div_frm_c">
           <form id="frm_categoria" name="frm_categoria" action="" method="post">
-            <fieldset>
-              <label>ID</label>
-              <br>
-              <input type="text" id="id_categoria" name="id_categoria" placeholder="ID" readonly/>
+            <fieldset>              
               <label>Nombre de la categoria</label>          
               <input type="text" id="nombre" name="nombre" placeholder="nombre de la categoria" required />
             </fieldset>

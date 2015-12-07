@@ -18,8 +18,16 @@ include("conexion2.php");
     </section>
     <!-- Main content -->    
     <div id="div_frm">
-          <form id="frm_coductor" name="frm_conductor" action="" method="post">
+          <form enctype="multipart/form-data" id="frm_img" name="frm_img" action="" method="post">          
             <fieldset>
+             <label for="exampleInputFile">Fotografia del conductor (500px x 300px)</label><br>
+                  <input type="file" id="imagen" name="imagen" required>
+                                  
+            </fieldset>
+          </form>
+          <form id="frm_conductor" name="frm_conductor" action="" method="post">
+            <fieldset>
+              <div id="respuesta"></div><br>
               <label>Nombre del Conductor</label><br>            
               <input type="text" id="nombre" name="nombre" placeholder="nombre del conductor" required />
               <br>
@@ -27,12 +35,10 @@ include("conexion2.php");
               <input type="email" id="correo" name="correo" placeholder="Correo" required />
               <br>
               <label>Biografia</label><br>
-              <textarea cols="30"rows="9" id="biografia" name="biografia" placeholder="Biografia del Conductor" />
+              <textarea cols="30"rows="9" id="biografia" name="biografia" placeholder="Biografia del Conductor" required/>
               <br>
-              <div class="form-group">
-                  <label for="exampleInputFile">Fotografia del conductor (500px x 300px)</label>
-                  <input type="file" id="imagen_up">
-              </div>
+              <!--<div class="form-group">-->                              
+              <!--</div>-->
             </fieldset>
             <fieldset id="btn">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
@@ -57,8 +63,15 @@ include("conexion2.php");
               <br>
               <div class="form-group">
                   <label for="exampleInputFile">Fotografia del conductor (500px x 300px)</label>
-                  <input type="file" id="imagen_up">
+                  <input type="file" id="imagen_up" name="imagen_up">
               </div>
+              <br>
+              <label>Estatus</label><br>         
+              <select name="estatus" id="estatus" required >
+                    <option value="">Seleccione un Estatus</option>
+                    <option value="ACTIVO">Activo</option>
+                    <option value="INACTIVO">Inactivo</option>                    
+              </select> 
             </fieldset>
             <fieldset id="btn2">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
@@ -78,16 +91,7 @@ include("conexion2.php");
           <div class="col-xs-12"> 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Conductores</h3>
-              <!--
-               <div class="box-tools">
-                <ul class="pagination pagination-sm no-margin pull-right">
-                  <li><a href="#manana">Ma&ntilde;ana</a></li>
-                  <li><a href="#tarde">Tarde</a></li>
-                  <li><a href="#noche">Noche</a></li>                  
-                </ul>
-              </div>
-              -->
+              <h3 class="box-title">Conductores</h3>              
             </div>            
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">            

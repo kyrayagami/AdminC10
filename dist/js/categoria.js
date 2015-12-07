@@ -60,7 +60,8 @@ $(function(){
 					alert("Ocurrio un error al ejecutar la operacion, intentelo de nuevo");
 					$('#loader_c').hide();	
 					$('#btn_c').show();
-				}								
+				}	
+				//alert("r: "+response.respuesta);
 			},
 			error: function(){//SI OCURRE UN ERROR 
 				alert('El servicio no esta disponible intentelo mas tarde');//MENSAJE EN CASO DE ERROR
