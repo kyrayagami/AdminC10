@@ -19,15 +19,15 @@ $(function(){
 		autoOpen:false,
 		modal:true,
 		title:'Editar Conductor',
-		width:300,
+		width:375,
 		height:'auto',
 		show:{
 			effect:"clip",
-			duration:500
+			duration:300
 		},
 		hide:{
 			effect:"clip",
-			duration:500
+			duration:300
 		}
 	});
 	$('#agregar').on('click',function(){
@@ -80,7 +80,9 @@ $(function(){
 	});
 	$('#frm_conductor').on('submit',function(){		
 		var datos=$(this).serialize();
-		alert(datos);
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		//alert(datos);
 		$.ajax({
 			type:'POST',
 			dataType:"json",
@@ -114,13 +116,18 @@ $(function(){
 
 	$("#lis_conductores").on("click","a",function(){
 		var pos=$(this).parent().parent();		
-		
-		$("#frm_edit_conductor input[type=text],input[type=email],select").each(function(index){
+		/*
+		$("#frm_edit_conductor input[type=text],input[type=email],select,textarea").each(function(index){
 			$(this).val($(pos).children("td:eq("+index+")").text());
 			//var dat
 			//alert("dat : "+index);
 			//alert(" .. "+ $(pos).children("td:eq("+index+")").text());
-		});
+		});*/
+		$("#id_conductor").val($(pos).children("td:eq(0)").text());
+		$("#nombre_up").val($(pos).children("td:eq(1)").text());
+		$("#correo_up").val($(pos).children("td:eq(2)").text());
+		$("#biografia_up").val($(pos).children("td:eq(3)").text());
+		$("#estatus").val($(pos).children("td:eq(4)").text());
 		//var valor = $(pos).children("td:eq(4)").text();
 		//var combo = $("#id_categoria").length();
 		//var combo = document.forms["tu_formulario"].tuSelect;
@@ -137,18 +144,19 @@ $(function(){
 			$("#div_frm2").dialog("open");			
 		}
 		// aqui faltaria agregar si se va a desactivar o algo asi
-		else{
-			if(confirm("¿Seguro de eliminar el Registro:"+$(pos).children("td:eq(1)").text()+"?")){
-				//$("#opcion").val("eliminar");
-				tipo='eliminar';
-				$("#frm_edit_conductor").submit();
+		else 
+			if ($(this).text()=="Eliminar"){
+				if(confirm("¿Seguro de eliminar el Registro:"+$(pos).children("td:eq(1)").text()+"?")){
+					//$("#opcion").val("eliminar");
+					tipo='eliminar';
+					$("#frm_edit_conductor").submit();
+				}
 			}
-		}
 	});
 
 	$('#frm_edit_conductor').on('submit',function(){		
 		var datos=$(this).serialize();
-		//alert("tipo es = "+tipo+" datos: "+datos);
+		alert("tipo es = "+tipo+" datos: "+datos);
 		$.ajax({
 			type:'POST',
 			dataType:"json",

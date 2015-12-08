@@ -21,8 +21,7 @@ include("conexion2.php");
           <form enctype="multipart/form-data" id="frm_img" name="frm_img" action="" method="post">          
             <fieldset>
              <label for="exampleInputFile">Fotografia del conductor (500px x 300px)</label><br>
-                  <input type="file" id="imagen" name="imagen" required>
-                                  
+                  <input type="file" id="imagen" name="imagen" required>                                  
             </fieldset>
           </form>
           <form id="frm_conductor" name="frm_conductor" action="" method="post">
@@ -52,6 +51,13 @@ include("conexion2.php");
     <div id="div_frm2">
           <form id="frm_edit_conductor" action="" method="post">
             <fieldset>
+            <label>ID</label>
+              <br>
+              <input type="text" id="id_conductor" name="id_conductor" placeholder="ID" readonly/>
+              <br>
+                <label for="exampleInputFile">Fotografia del conductor (500px x 300px)</label>
+                <input type="file" id="imagen_up" name="imagen_up">
+              <br>
               <label>Nombre del Conductor</label><br>         
               <input type="text" id="nombre_up" name="nombre_up" placeholder="nombre del conductor" required />
               <br>
@@ -59,12 +65,7 @@ include("conexion2.php");
               <input type="email" id="correo_up" name="correo_up" placeholder="Correo" required />
               <br>
               <label>Biografia</label><br>
-              <textarea cols="20"rows="5" id="biografia_up" name="biografia_up" placeholder="Biografia del Conductor" />
-              <br>
-              <div class="form-group">
-                  <label for="exampleInputFile">Fotografia del conductor (500px x 300px)</label>
-                  <input type="file" id="imagen_up" name="imagen_up">
-              </div>
+              <textarea cols="20"rows="5" id="biografia_up" name="biografia_up" placeholder="Biografia del Conductor" />              
               <br>
               <label>Estatus</label><br>         
               <select name="estatus" id="estatus" required >
@@ -100,8 +101,8 @@ include("conexion2.php");
                   <tr>
                       <th>ID</th>
                       <th>Nombre</th>
-                      <th>Descripcion</th>
                       <th>Correo</th>
+                      <th>Descripcion</th>                      
                       <th>Estatus</th>
                       <th>Foto</th>
                       <th>Acciones</th> 

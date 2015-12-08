@@ -2,7 +2,8 @@
 $statusConexion=true;
 function consultaConductores($conexion){
 	$resultado='';
-	$consult=mysql_query("SELECT * FROM conductores");
+	$consult=mysql_query("select * from conductores LEFT join 
+		imagenes on conductores.id_imagen=imagenes.id_imagen");
 		if (mysql_num_rows($consult)>0)
 		{
 			while ($dato=mysql_fetch_array($consult))
@@ -13,12 +14,14 @@ function consultaConductores($conexion){
 	 					<td> '.$dato["correo"].'</td>
 	 					<td> '.$dato["descripcion_conductor"].'</td>	 					
 	 					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
-	 					<td> '.$dato["id_imagen"].'</td>
+	 					<td> <a href="'.$dato['url'].'" rel="lightbox" title="'.$dato['conductor'].'">
+	 					<img src="'.$dato['url'].'" width="40px" height="40px" alt="'.$dato['url'].'"></a>
+	 					</td>
 	 					<td> <a class="btn btn-info">Editar</a>
 	 					<a class="btn btn-danger">Eliminar</a></td>
 	 			</tr>';
 			}		
-		}
+		}		
 		else
 		{
 			$salida='<tr id="sinDatos">

@@ -42,7 +42,7 @@ if($statusConexion){
 							,$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Actualizado";
-							$ContenidoHTML=consultaProgramas($conex);					
+							$ContenidoHTML=consultaConductores($conex);					
 						}
 						else{
 							$respuesta="BAD";
@@ -54,7 +54,7 @@ if($statusConexion){
 							where id_conductor=".$_POST['id_conductor'],$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Eliminado";
-							$ContenidoHTML=consultaProgramas($conex);	
+							$ContenidoHTML=consultaConductores($conex);	
 						}
 						else{
 							$respuesta="BAD";

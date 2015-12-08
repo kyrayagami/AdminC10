@@ -27,7 +27,7 @@ if($statusConexion){
                 if(move_uploaded_file($file['tmp_name'],$destino)){
                 //if ($resultado) {
                 // cambio de destino
-                    $destino="files/".$prefijo.$archivo.$file["name"];
+                    $destino="files/".$prefijo."_".$archivo.$file["name"];
                     $sql=mysql_query("INSERT INTO imagenes(url) VALUES('".$destino."')", $conex);
                     $consult=mysql_query("SELECT * FROM imagenes where url='".$destino."'",$conex);
                     $row=mysql_fetch_array($consult);
