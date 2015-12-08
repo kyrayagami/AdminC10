@@ -88,11 +88,11 @@ $(function(){
 		//var formData = new FormData($("#frm_img")[0]);
 		formData.append("Op", tipo);
 		//alert((formData)[1]);
-		alert(formData);
+		//alert(formData);
 		$.ajax({
 			type:'POST',
 			//dataType:"json",
-			url:"dist/otro/ajaxconductor2.php",
+			url:"dist/otro/ajaxconductor.php",
 			//data: 'Op='+tipo+'&'+formData,//'Op='+ $("#opcion").val() +'&'+datos,
 			data: formData,
 			mimeType: "multipart/form-data",
@@ -115,7 +115,7 @@ $(function(){
 					alert("Ocurrio un error al ejecutar la operacion, intentelo de nuevo");
 					$('#loader').hide();	
 					$('#btn').show();
-					$("#lis_conductores").html(response.contenido); ///quitar despues
+					//$("#lis_conductores").html(response.contenido); ///quitar despues
 				}
 			},
 			error: function(){//SI OCURRE UN ERROR 

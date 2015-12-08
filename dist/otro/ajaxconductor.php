@@ -1,6 +1,6 @@
 <?php
 include("../../conexion2.php");
-sleep(1);
+sleep(2);
 if($statusConexion){
 	$respuesta="DONE";
 	$mensaje="";
@@ -21,7 +21,7 @@ if($statusConexion){
 						if(move_uploaded_file($file['tmp_name'],$destino)){                		
                 		// cambio de destino
                     		$destino="files/".$prefijo."_".$archivo.$file["name"];
-                    		$sql=mysql_query("INSERT INTO imagenes(url) VALUES('".$destino."')", $conex);
+                    		$sql=mysql_query("INSERT INTO imagenes(alt,url,metatags) VALUES('".$archivo."','".$destino."' ,'".$archivo."')", $conex);
                     		if(mysql_affected_rows()>0){
                     			$consult=mysql_query("SELECT * FROM imagenes where url='".$destino."'",$conex);
                     			$row=mysql_fetch_array($consult);

@@ -116,4 +116,4 @@ include("conexion2.php");
         <!-- /.col -->                                    
     </section>        
     <!-- /.content -->          
-    <script type="text/javascript" src="dist/js/conductor2.js"></script>
+    <script type="text/javascript" src="dist/js/conductor.js"></script>
