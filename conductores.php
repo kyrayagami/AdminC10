@@ -9,7 +9,7 @@ include("conexion2.php");
 ?>    
     <section class="content-header">
       <h1>
-       Conductores
+       Conductores 
       </h1>
       <ol class="breadcrumb">
         <li><a><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,15 +18,11 @@ include("conexion2.php");
     </section>
     <!-- Main content -->    
     <div id="div_frm">
-          <form enctype="multipart/form-data" id="frm_img" name="frm_img" action="" method="post">          
+          <form id="frm_c" name="frm_c" method="post" enctype="multipart/form-data">
             <fieldset>
-             <label for="exampleInputFile">Fotografia del conductor (500px x 300px)</label><br>
-                  <input type="file" id="imagen" name="imagen" required>                                  
-            </fieldset>
-          </form>
-          <form id="frm_conductor" name="frm_conductor" action="" method="post">
-            <fieldset>
-              <div id="respuesta"></div><br>
+            <label for="exampleInputFile">Fotografia del conductor (500px x 300px)</label><br>
+            <input type="file" id="imagen" name="imagen" required>                                                                             
+            <br>              
               <label>Nombre del Conductor</label><br>            
               <input type="text" id="nombre" name="nombre" placeholder="nombre del conductor" required />
               <br>
@@ -120,4 +116,4 @@ include("conexion2.php");
         <!-- /.col -->                                    
     </section>        
     <!-- /.content -->          
-    <script type="text/javascript" src="dist/js/conductor.js"></script>
+    <script type="text/javascript" src="dist/js/conductor2.js"></script>
