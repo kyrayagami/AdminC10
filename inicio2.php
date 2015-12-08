@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminC10  | Dashboard</title>
 
+<!---->
+<link rel="stylesheet" href="lightbox.css">
+
   <!--inicio links de los horario para agregar a la siguiente-->
 <link rel="stylesheet" type="text/css" media="all" href="Archivos/jsDatePick_ltr.css">
 <link href="Archivos/css_003.css" rel="stylesheet" type="text/css">
@@ -117,6 +120,17 @@
           } 
         });
       });
+
+ //galeria de imagenes
+ $('#btn_galeria_vista').click(function(){
+        $.ajax({
+          url: 'galeria_2.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });           
+ //     
 
     });
   </script>
@@ -277,14 +291,12 @@
           <span>Programa</span>          
           </a>
         </li>
-        <!--
         <li>
-          <a id="boton_cargar" href="#">
-          <i class="fa fa-circle-o"></i> 
-          <span>Prueba ajax</span>
+          <a id="btn_galeria_vista" href="#">
+           <i class="fa fa-photo"></i> 
+          <span>Galeria Vista</span>
           </a>
-        </li> 
-        --> 
+        </li>
 
         <li>         
 
@@ -463,5 +475,6 @@ finaliza el envio de reloj
 <script src="plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
+<script src="bootstrap/js/lightbox.min.js"></script>
 </body>
 </html>
