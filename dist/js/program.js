@@ -19,21 +19,22 @@ $(function(){
 		autoOpen:false,
 		modal:true,
 		title:'Editar Programa',
-		width:300,
+		width:350,
 		height:'auto',
 		show:{
 			effect:"clip",
-			duration:500
+			duration:300
 		},
 		hide:{
 			effect:"clip",
-			duration:500
+			duration:300
 		}
 	});
 	$('#agregar').on('click',function(){
 		$('#div_frm_pro').dialog('open');
 		tipo='nuevo';
 		$('#frm_programa input[type=text]').val('');
+		$('#frm_programa textarea').val('');
 		//$("#dia").find('option').removeAttr("selected");
 		//$('#status_user option[selected]').removeAttr('selected');//REMOVEMOS EL ATTRIBUTO SELECTED DEL SELECT		
 	});
@@ -88,7 +89,12 @@ $(function(){
 		$("#descripcion_pro").val($(pos).children("td:eq(2)").text());
 		$("#correo_pro").val($(pos).children("td:eq(3)").text());
 		//$("#id_programa").val($(pos).children("td:eq(4)").text());
-		$("#estatus_pro").val($(pos).children("td:eq(5)").text());
+		$("#logo_pro").val($(pos).children("td:eq(5)").text());
+		$("#imagen_slide_pro").val($(pos).children("td:eq(6)").text());
+		$("#imagen_pro").val($(pos).children("td:eq(7)").text());
+		$("#estatus_pro").val($(pos).children("td:eq(8)").text());
+		//alert("img "+ $(pos).children("td:eq(5)").text());		
+		//alert("img "+ $(pos).children("td:eq(7)").text());
 		var valor = $(pos).children("td:eq(4)").text();
 		//var combo = $("#id_categoria").length();
 		//var combo = document.forms["tu_formulario"].tuSelect;
@@ -119,6 +125,7 @@ $(function(){
 		event.preventDefault();
 		event.stopImmediatePropagation();
 		var datos=$(this).serialize();
+		alert(datos);
 		$.ajax({
 			type:'POST',
 			dataType:"json",

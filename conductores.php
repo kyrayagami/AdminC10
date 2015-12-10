@@ -29,8 +29,8 @@ include("conexion2.php");
               <label>Biografia</label><br>
               <textarea cols="30"rows="9" id="biografia" name="biografia" placeholder="Biografia del Conductor" required/>
               <br>
-              <label for="exampleInputFile">Fotografia del conductor </label><br>
-              <input type="text" id="imagen" name="imagen" placeholder="imagen del conductor" required />
+              <label>Fotografia del conductor (link) </label><br>
+              <input type="text" id="imagen" name="imagen" placeholder="link de la imagen de conductor" required />
             </fieldset>
             <fieldset id="btnc">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
@@ -56,8 +56,8 @@ include("conexion2.php");
               <label>Biografia</label><br>
               <textarea cols="30"rows="9" id="biografia_c_up" name="biografia_c_up" placeholder="Biografia del Conductor" required/>
               <br>
-              <label for="exampleInputFile">Fotografia del conductor </label><br>
-              <input type="text" id="imagen_c_up" name="imagen_c_up" placeholder="imagen del conductor" required />
+              <label for="exampleInputFile">Fotografia del conductor (link)</label><br>
+              <input type="text" id="imagen_c_up" name="imagen_c_up" placeholder="link de la imagen de conductor" required />
               <br>
               <label>Estatus</label><br>         
               <select name="estatus_c" id="estatus_c" required >

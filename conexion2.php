@@ -395,9 +395,12 @@ function consultaProgramas($conexion){
 			 	<tr>			 	
 					<td>'.$dato["id_programa"].'</td>
 					<td>'.$dato["nombre"].'</td>					
-					<td>'.$dato["descripcion"].'</td>
+					<td><p style="width:200px; height:50px; overflow:hidden">'.$dato["descripcion"].'</p></td>
 					<td>'.$dato["correo"].'</td>
 					<td>'.$dato["categoria"].'</td>
+					<td style="display:none;">'.$dato["logo"].'</td>
+					<td style="display:none;">'.$dato["img_slide"].'</td>
+					<td style="display:none;">'.$dato["imgtop_programa"].'</td>
 					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
 					<td><a class="btn btn-info">Editar</a>
 					<a class="btn btn-danger">Eliminar</a></td>

@@ -32,6 +32,9 @@ if($statusConexion){
 							estatus='".$_POST['estatus_pro']."',
 							descripcion='".$_POST['descripcion_pro']."',
 							correo='".$_POST['correo_pro']."',
+							logo='".$_POST['logo_pro']."',
+							img_slide='".$_POST['imagen_slide_pro']."',
+							imgtop_programa='".$_POST['imagen_pro']."',							
 							id_categoria='".$_POST['id_categoria']."'
 							where id_programa=".$_POST['id_programa']
 							,$conex);

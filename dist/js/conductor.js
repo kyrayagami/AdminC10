@@ -23,11 +23,11 @@ $(function(){
 		height:'auto',
 		show:{
 			effect:"clip",
-			duration:500
+			duration:300
 		},
 		hide:{
 			effect:"clip",
-			duration:500
+			duration:300
 		}
 	});
 	$('#agregar').on('click',function(){
