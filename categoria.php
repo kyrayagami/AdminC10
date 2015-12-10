@@ -15,34 +15,34 @@ include("conexion2.php");
       </ol>
     </section>
     <!-- Main content -->    
-    <div id="div_frm_c">
+    <div id="div_frm_cat">
           <form id="frm_categoria" name="frm_categoria" action="" method="post">
-            <fieldset>              
+            <fieldset>             
               <label>Nombre de la categoria</label>          
               <input type="text" id="nombre" name="nombre" placeholder="nombre de la categoria" required />
             </fieldset>
-            <fieldset id="btn_c">
+            <fieldset id="btn_cat">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
             </fieldset>
-            <fieldset id="loader_c">
+            <fieldset id="loader_cat">
               <span>Espere un momento</span>
               <img src="dist/img/loader.gif">
             </fieldset>
           </form>            
     </div> 
-    <div id="div_frm_c2">
+    <div id="div_frm_cat2">
           <form id="frm_categoria_edit" action="" method="post">
             <fieldset>
               <label>ID</label>
               <br>
               <input type="text" id="id_categoria" name="id_categoria" placeholder="ID" readonly/>
               <label>Nombre de la categoria</label>            
-              <input type="text" id="nombre" name="nombre" placeholder="nombre de la categoria" required />
+              <input type="text" id="nombre_up" name="nombre_up" placeholder="nombre de la categoria" required />
             </fieldset>
-            <fieldset id="btn_c">
+            <fieldset id="btn_cat2">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
             </fieldset>
-            <fieldset id="loader_c">
+            <fieldset id="loader_cat2">
               <span>Espere un momento</span>
               <img src="dist/img/loader.gif">
             </fieldset>
@@ -51,7 +51,7 @@ include("conexion2.php");
     <section class="content">                                  
           <div class="col-xs-9">
             <div>
-              <button id="agregar_c" class="btn btn-primary btn-md ">Agregar</button>
+              <button id="agregar_cat" class="btn btn-primary btn-md ">Agregar</button>
             </div>
           </div>        
           <div class="col-xs-12"> 

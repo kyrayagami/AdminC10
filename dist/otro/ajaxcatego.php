@@ -27,7 +27,7 @@ if($statusConexion){
 				case 'editar':
 						$consulta=mysql_query("
 							update categoria set
-							categoria='".$_POST['nombre']."'							
+							categoria='".$_POST['nombre_up']."'							
 							where id_categoria=".$_POST['id_categoria']
 							,$conex);
 						if(mysql_affected_rows()>0){

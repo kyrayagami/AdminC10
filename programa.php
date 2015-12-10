@@ -17,22 +17,22 @@ include("conexion2.php");
       </ol>
     </section>
     <!-- Main content -->    
-    <div id="div_frm">
+    <div id="div_frm_pro">
           <form id="frm_programa" name="frm_programa" action="" method="post">
             <fieldset>
               <label>Nombre del Programa</label>            
-              <input type="text" id="nombre" name="nombre" placeholder="nombre del programa" required />
+              <input type="text" id="nombre_pro" name="nombre_pro" placeholder="nombre del programa" required />
             </fieldset>
-            <fieldset id="btn">
+            <fieldset id="btnp">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
             </fieldset>
-            <fieldset id="loader">
+            <fieldset id="loaderp">
               <span>Espere un momento</span>
               <img src="dist/img/loader.gif">
             </fieldset>
           </form>            
     </div>
-    <div id="div_frm2">
+    <div id="div_frm_pro2">
           <form id="frm_edit_progra" action="" method="post">
             <fieldset>
               <label>ID</label>
@@ -41,14 +41,14 @@ include("conexion2.php");
               <br>
               <label>Nombre del Programa</label>
               <br>
-              <input type="text" id="nombre" name="nombre" placeholder="Nombre del programa" required/>
+              <input type="text" id="nombre_pro_up" name="nombre_pro_up" placeholder="Nombre del programa" required/>
               <br>
               <label>Descripcion</label>
               <br>
-              <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion" required/>
+              <input type="text" id="descripcion_pro" name="descripcion_pro" placeholder="Descripcion" required/>
               <br>
               <label>Correo</label><br>   
-              <input type="email" id="correo" name="correo" placeholder="Correo" required />
+              <input type="email" id="correo_pro" name="correo_pro" placeholder="Correo" required />
               <br>
               <label>Categoria</label><br>         
               <select name="id_categoria" id="id_categoria" required>
@@ -57,16 +57,16 @@ include("conexion2.php");
               </select>
               <br>
               <label>Estatus</label><br>         
-              <select name="estatus" id="estatus" required >
+              <select name="estatus_pro" id="estatus_pro" required >
                     <option value="">Seleccione un Estatus</option>
                     <option value="ACTIVO">Activo</option>
                     <option value="INACTIVO">Inactivo</option>                    
               </select>              
             </fieldset>
-            <fieldset id="btn2">
+            <fieldset id="btnp2">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
             </fieldset>
-            <fieldset id="loader2">
+            <fieldset id="loaderp2">
               <span>Espere un momento</span>
               <img src="dist/img/loader.gif">
             </fieldset>

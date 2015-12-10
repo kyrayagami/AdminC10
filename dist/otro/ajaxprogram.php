@@ -13,7 +13,7 @@ if($statusConexion){
 							insert into programas
 							(nombre,estatus) 
 							values(
-							'".$_POST['nombre']."',
+							'".$_POST['nombre_pro']."',
 							'ACTIVO')"
 							,$conex);
 						if(mysql_affected_rows()>0){
@@ -28,10 +28,10 @@ if($statusConexion){
 				case 'editar':
 						$consulta=mysql_query("
 							update programas set
-							nombre='".$_POST['nombre']."',
-							estatus='".$_POST['estatus']."',
-							descripcion='".$_POST['descripcion']."',
-							correo='".$_POST['correo']."',
+							nombre='".$_POST['nombre_pro_up']."',
+							estatus='".$_POST['estatus_pro']."',
+							descripcion='".$_POST['descripcion_pro']."',
+							correo='".$_POST['correo_pro']."',
 							id_categoria='".$_POST['id_categoria']."'
 							where id_programa=".$_POST['id_programa']
 							,$conex);
