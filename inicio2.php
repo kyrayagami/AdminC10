@@ -249,7 +249,7 @@
         </li>      
         <li>
           <a id="btn_conductor" href="#"> 
-          <i class="fa fa-puzzle-piece"></i>
+          <i class="fa fa-fw fa-user-plus"></i>
           <span>Conductor</span>          
           </a>
         </li>            
