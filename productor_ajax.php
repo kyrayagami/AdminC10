@@ -17,59 +17,59 @@ include("conexion2.php");
       </ol>
     </section>
     <!-- Main content -->    
-    <div id="div_frm_p">
+    <div id="div_frm_productor">
           <form id="frm_productor" name="frm_productor" action="" method="post">
             <fieldset>
               <label>Nombre del Productor</label><br>            
-              <input type="text" id="nombre" name="nombre" placeholder="nombre del conductor" required />
+              <input type="text" id="nom_productor" name="nom_productor" placeholder="nombre del productor" required />
               <br>
               <label>Correo</label><br>   
-              <input type="email" id="correo" name="correo" placeholder="Correo" required />
+              <input type="email" id="correo_productor" name="correo_productor" placeholder="Correo" required />
               <br>
-              <label>Biografia</label><br>
-              <textarea cols="30"rows="9" id="biografia" name="biografia" placeholder="Biografia del Conductor" required/>
+              <label>Descripcion Productor</label><br>
+              <textarea cols="30"rows="5" id="desc_productor" name="desc_productor" placeholder="Descripcion del Productor" required/>
               <br>
-              <label for="exampleInputFile">Fotografia del productor </label><br>
-              <input type="text" id="imagen" name="imagen" placeholder="imagen del conductor" required />
+              <label >Fotografia del productor </label><br>
+              <input type="text" id="img_productor" name="img_productor" placeholder="imagen del productor" required />
             </fieldset>
-            <fieldset id="btnp">
+            <fieldset id="btnpr">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
             </fieldset>
-            <fieldset id="loaderp">
+            <fieldset id="loaderpr">
               <span>Espere un momento</span>
               <img src="dist/img/loader.gif">
             </fieldset>
           </form>            
     </div>
-    <div id="div_frm_p2">
+    <div id="div_frm_productor2">
           <form id="frm_edit_productor" action="" method="post">
             <fieldset>
               <label>ID</label>
               <br>
               <input type="text" id="id_productor" name="id_productor" placeholder="ID" readonly/>
               <label>Nombre del Productor</label><br>         
-              <input type="text" id="nombre_c_up" name="nombre_c_up" placeholder="nombre del conductor" required />
+              <input type="text" id="nom_productor_up" name="nom_productor_up" placeholder="nombre del productor" required />
               <br>
               <label>Correo</label><br>   
-              <input type="email" id="correo_c_up" name="correo_c_up" placeholder="Correo" required />
+              <input type="email" id="correo_productor_up" name="correo_productor_up" placeholder="Correo" required />
               <br>
-              <label>Biografia</label><br>
-              <textarea cols="30"rows="9" id="biografia_c_up" name="biografia_c_up" placeholder="Biografia del Conductor" required/>
+              <label>Descripcion del productor</label><br>
+              <textarea cols="30"rows="5" id="desc_productor_up" name="desc_productor_up" placeholder="Biografia del Conductor" required/>
               <br>
-              <label for="exampleInputFile">Fotografia del productor </label><br>
-              <input type="text" id="imagen_c_up" name="imagen_c_up" placeholder="imagen del conductor" required />
+              <label >Fotografia del productor </label><br>
+              <input type="text" id="img_poductor_up" name="img_poductor_up" placeholder="imagen del productor" required />
               <br>
               <label>Estatus</label><br>         
-              <select name="estatus_c" id="estatus_c" required >
+              <select name="estatus_productor" id="estatus_productor" required >
                     <option value="">Seleccione un Estatus</option>
                     <option value="ACTIVO">Activo</option>
                     <option value="INACTIVO">Inactivo</option>                    
               </select>
             </fieldset>
-            <fieldset id="btnp2">
+            <fieldset id="btnpr2">
               <input type="submit" id="enviar" value="Finalizar" class="btn btn-primary" />
             </fieldset>
-            <fieldset id="loaderp2">
+            <fieldset id="loaderpr2">
               <span>Espere un momento</span>
               <img src="dist/img/loader.gif">
             </fieldset>
@@ -84,16 +84,7 @@ include("conexion2.php");
           <div class="col-xs-12"> 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Productores</h3>
-              <!--
-               <div class="box-tools">
-                <ul class="pagination pagination-sm no-margin pull-right">
-                  <li><a href="#manana">Ma&ntilde;ana</a></li>
-                  <li><a href="#tarde">Tarde</a></li>
-                  <li><a href="#noche">Noche</a></li>                  
-                </ul>
-              </div>
-              -->
+              <h3 class="box-title">Productores</h3>              
             </div>            
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">            

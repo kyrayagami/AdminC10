@@ -10,7 +10,7 @@ if($statusConexion){
 		switch ($_POST['Op']) {
 				case 'nuevo':						              
 						//$id_imagen = $_POST['id_imagen'];
-						$consulta=mysql_query("INSERT INTO productores(productor,estatus,correo,descripcion_productor,imagen_url) values('".$_POST['nombre']."', 'ACTIVO','".$_POST['correo']."','".$_POST['biografia']."','".$_POST['imagen']."')",$conex);
+						$consulta=mysql_query("INSERT INTO productores(productor,estatus,correo,descripcion_productor,imagen_url) values('".$_POST['nom_productor']."', 'ACTIVO','".$_POST['correo_productor']."','".$_POST['desc_productor']."','".$_POST['img_productor']."')",$conex);
 						if(mysql_affected_rows()>0){
 							//actualizar la tabla de imagenes							
 							$mensaje="Registro Insertado";
@@ -25,11 +25,11 @@ if($statusConexion){
 					break;
 				case 'editar':				
 						$consulta=mysql_query("update productores set
-							productor='".$_POST['nombre_c_up']."',
+							productor='".$_POST['nom_productor_up']."',
 							estatus='".$_POST['estatus_c']."',
-							correo='".$_POST['correo_c_up']."',
-							descripcion_productor='".$_POST['biografia_c_up']."',							
-							imagen_url='".$_POST['imagen_c_up']."'
+							correo='".$_POST['correo_productor_up']."',
+							descripcion_productor='".$_POST['desc_productor_up']."',							
+							imagen_url='".$_POST['img_poductor_up']."'
 							where id_productor=".$_POST['id_productor']
 							,$conex);
 						if(mysql_affected_rows()>0){
