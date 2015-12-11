@@ -28,6 +28,34 @@ function consultaConductores($conexion){
 	//$salida = array($M,$T,$N);	
 	return $salida;
 }
+function consultaProductores($conexion){
+	$resultado='';
+	$consult=mysql_query("SELECT * FROM productores");
+		if (mysql_num_rows($consult)>0)
+		{
+			while ($dato=mysql_fetch_array($consult))
+	 		{	 			 			
+	 			$salida.='<tr>	 					
+	 					<td> '.$dato["id_productor"].'</td>
+	 					<td> '.$dato["productor"].'</td>	 							 
+	 					<td> '.$dato["correo"].'</td>
+	 					<td> '.$dato["descripcion_productor"].'</td>	 					
+	 					<td> '.$dato["imagen_url"].'</td>
+	 					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
+	 					<td> <a class="btn btn-info">Editar</a>
+	 					<a class="btn btn-danger">Eliminar</a></td>
+	 			</tr>';
+			}		
+		}
+		else
+		{
+			$salida='<tr id="sinDatos">
+			<td colspan="7">No hay Registros de horarios en este dia</td>
+			</tr>';
+		}
+	//$salida = array($M,$T,$N);	
+	return $salida;
+}
 function consult_horario_por_dia($conexion,$dia){
 $salida='';
 $consulta=mysql_query("SELECT * 

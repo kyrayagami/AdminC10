@@ -255,13 +255,13 @@
         </li>            
         <li>
           <a id="btn_publi" href="#"> 
-          <i class="fa fa-puzzle-piece"></i>
+          <i class="fa fa-fw fa-file-text"></i>
           <span>Publicidad</span>          
           </a>
         </li>
         <li>
           <a id="btn_slide" href="#"> 
-          <i class="fa fa-puzzle-piece"></i>
+          <i class="fa fa-fw fa-television"></i>
           <span>Slide</span>          
           </a>
         </li>
@@ -273,7 +273,7 @@
         </li>
         <li>
           <a id="btn_programa" href="#"> 
-          <i class="fa fa-puzzle-piece"></i>
+          <i class="fa fa-fw fa-file-movie-o"></i>
           <span>Programa</span>          
           </a>
         </li>
