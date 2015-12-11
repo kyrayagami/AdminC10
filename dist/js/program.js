@@ -91,8 +91,9 @@ $(function(){
 		//$("#id_programa").val($(pos).children("td:eq(4)").text());
 		$("#logo_pro").val($(pos).children("td:eq(5)").text());
 		$("#imagen_slide_pro").val($(pos).children("td:eq(6)").text());
-		$("#imagen_pro").val($(pos).children("td:eq(7)").text());
-		$("#estatus_pro").val($(pos).children("td:eq(8)").text());
+		$("#desc_slide").val($(pos).children("td:eq(7)").text());		
+		$("#imagen_pro").val($(pos).children("td:eq(8)").text());		
+		$("#estatus_pro").val($(pos).children("td:eq(9)").text());
 		//alert("img "+ $(pos).children("td:eq(5)").text());		
 		//alert("img "+ $(pos).children("td:eq(7)").text());
 		var valor = $(pos).children("td:eq(4)").text();

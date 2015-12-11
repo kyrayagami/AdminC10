@@ -34,6 +34,10 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">  
   <link rel="stylesheet" href="dist/css/jquery-ui-1.10.3.custom/jquery-ui-1.10.3.custom/css/no-theme/jquery-ui-1.10.3.custom.min.css"/>
+  <!--jquery-ui-1.10.3.custom.min.js-->
+                                      <!--dist\css\jquery-ui-1.10.3.custom\jquery-ui-1.10.3.custom\js
+  <script type="text/javascript" src="dist/css/jquery-ui-1.10.3.custom/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+  -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
   <script type="text/javascript"> 
     $(document).ready(function(){
@@ -53,8 +57,6 @@
           } 
         });
       });
-
-
       
       $('#btn_categoria').click(function(){
         $.ajax({
@@ -99,15 +101,7 @@
             $('#div_dinamico').html(data);
           } 
         });
-      });
-      $('#btn_slide').click(function(){
-        $.ajax({
-          url: 'slide_ajax.php',
-          success: function(data) {
-            $('#div_dinamico').html(data);
-          } 
-        });
-      });     
+      });      
 //final del agregado
       $('#btn_adm_horario').click(function(){
         $.ajax({
@@ -125,16 +119,7 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <script type="text/javascript">  
-      function validar(){
-        if(document.getElementById('nombre').value == ''){
-          alert("Escriba el nombre");
-          return false;
-        }
-      }
-  </script>  
-
+  <![endif]-->  
 </head>
 <body class="hold-transition skin-blue sidebar-mini" onload="mueveReloj()">
 <div class="wrapper">
@@ -196,7 +181,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>          
+          <p>Administrador</p>          
         </div>
       </div>      
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -213,27 +198,7 @@
             <i class="fa fa-dashboard"></i> 
             <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
-        </li>
-        <!--
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-puzzle-piece"></i> 
-            <span>Agregar </span>
-            <span class="label label-primary pull-right">8</span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#" data-toggle="modal" data-target="#Modalcatego"><i class="fa fa-circle-o"></i> Categorìa</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Conductor</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Galeria</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Nota</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Productor</a></li>            
-            
-            <li><a href="#" data-toggle="modal" data-target="#Modalprogra"><i class="fa fa-circle-o"></i> Programa</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Publicidad</a></li>            
-            <li><a href="#"><i class="fa fa-circle-o"></i> Slide</a></li>
-          </ul>
-        </li>
-        -->
+        </li>       
         <li>
           <a id="btn_categoria" href="#"> 
           <i class="fa fa-reddit-square"></i>
@@ -259,12 +224,13 @@
           <span>Publicidad</span>          
           </a>
         </li>
+        <!--
         <li>
           <a id="btn_slide" href="#"> 
           <i class="fa fa-fw fa-television"></i>
           <span>Slide</span>          
           </a>
-        </li>
+        </li>-->
         <li>
           <a id="btn_productor" href="#"> 
           <i class="fa fa-user"></i>
@@ -300,7 +266,7 @@
           </a>
         </li>
         -->
-
+        <!--
         <li class="treeview">
           <a href="#">
             <i class="fa fa-th"></i>
@@ -309,14 +275,14 @@
           </a>
           <ul class="treeview-menu">
             <li>
-              <!--<a id="btn_horario" href="#">-->
+              <a id="btn_horario" href="#">
               <a>
               <i class="fa fa-circle-o"></i> 
               <span> Ver Horarios</span>
               </a>
             </li>                      
           </ul>
-        </li>         
+        </li> -->        
       </ul>      
     </section>    
   </aside>
@@ -357,8 +323,11 @@
       <ol class="breadcrumb">
         <li><a ><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
-      </ol>
-    </section>    
+      </ol>      
+    </section>      
+    <section class="content">
+      <h1 align="center">Bienvenido al Administrador de horarios  Canal 10</h1>
+    </section>
   </div>
 
   <!-- /.content-wrapper -->
@@ -452,9 +421,6 @@ finaliza el envio de reloj
 
 <!-- Bootstrap 3.3.5 -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="plugins/morris/morris.min.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->

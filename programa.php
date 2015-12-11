@@ -46,16 +46,17 @@ include("conexion2.php");
               <label>Descripcion</label>
               <br>
               <!--<input type="text" id="descripcion_pro" name="descripcion_pro" placeholder="Descripcion" required/>-->
-              <textarea cols="25"rows="4" id="descripcion_pro" name="descripcion_pro" placeholder="Descripcion del programa" required/>
+              <textarea cols="25"rows="3" id="descripcion_pro" name="descripcion_pro" placeholder="Descripcion del programa" required/>
               <br>
               <label>Correo</label><br>   
               <input type="email" id="correo_pro" name="correo_pro" placeholder="Correo" required />
-              <br>
-              <br>
+              <br>              
               <label>Logo del programa (link) </label><br>
               <input type="text" id="logo_pro" name="logo_pro" placeholder="Logo del programa" required /><br>
               <label>Slide del programa (link)</label><br>
               <input type="text" id="imagen_slide_pro" name="imagen_slide_pro" placeholder="Slide del programa" required /><br>
+              <label>Descripcion Slide</label><br>
+              <input maxlength="50" type="text" id="desc_slide" name="desc_slide" placeholder="Descripcion Slider" required /><br>              
               <label>Imagen del programa (link)</label><br>
               <input type="text" id="imagen_pro" name="imagen_pro" placeholder="Imagen del programa" required /><br>
               <label>Categoria</label><br>         
