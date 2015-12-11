@@ -84,7 +84,7 @@ include("conexion2.php");
     <section class="content">                                  
           <div class="col-xs-9">
             <div>
-              <button id="agregar" class="btn btn-primary btn-md ">Agregar</button>
+              <button id="agregar_programa" class="btn btn-primary btn-md ">Agregar</button>
             </div>
           </div>        
           <div class="col-xs-12"> 

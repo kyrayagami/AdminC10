@@ -537,7 +537,7 @@ $consulta=mysql_query("SELECT *
                     <br> 
                     <span class="c_tit2">'.$dato["id_programa"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -558,7 +558,7 @@ $consulta=mysql_query("SELECT *
                     <br> 
                     <span class="c_tit2">'.$dato["id_programa"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -579,7 +579,7 @@ $consulta=mysql_query("SELECT *
                     <br> 
                     <span class="c_tit2">'.$dato["id_programa"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
                     <br>
                     </p>
                     <p></p>

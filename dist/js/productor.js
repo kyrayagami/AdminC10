@@ -30,7 +30,7 @@ $(function(){
 			duration:500
 		}
 	});
-	$('#agregar').on('click',function(){
+	$('#agregar_productor').on('click',function(){
 		$('#div_frm_productor').dialog('open');
 		tipo='nuevo';
 		$('#frm_productor input[type=text]').val('');

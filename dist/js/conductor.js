@@ -30,7 +30,7 @@ $(function(){
 			duration:300
 		}
 	});
-	$('#agregar').on('click',function(){
+	$('#agregar_conductor').on('click',function(){
 		$('#div_frm_c').dialog('open');
 		tipo='nuevo';
 		$('#frm_conductor input[type=text]').val('');

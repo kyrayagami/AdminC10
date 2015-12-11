@@ -150,7 +150,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">            
+              <img src="dist/img/avatar5.png" class="user-image" alt="User Image">            
             <span class="hidden-xs"> <?php //echo $_SESSION['nom']; ?></span>
             </a>
             <ul class="dropdown-menu">
@@ -178,7 +178,7 @@
 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Administrador</p>          
@@ -205,26 +205,27 @@
           <span>Categoria</span>          
           </a>
         </li>
-        
+        <!--
         <li>
           <a id="btn_galeria" href="#"> 
           <i class="fa fa-photo"></i>
           <span>Galeria</span>          
           </a>
-        </li>      
+        </li> -->     
         <li>
           <a id="btn_conductor" href="#"> 
           <i class="fa fa-fw fa-user-plus"></i>
           <span>Conductor</span>          
           </a>
-        </li>            
+        </li>
+        <!--            
         <li>
           <a id="btn_publi" href="#"> 
           <i class="fa fa-fw fa-file-text"></i>
           <span>Publicidad</span>          
           </a>
         </li>
-        <!--
+        
         <li>
           <a id="btn_slide" href="#"> 
           <i class="fa fa-fw fa-television"></i>

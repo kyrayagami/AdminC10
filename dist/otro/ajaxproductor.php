@@ -26,7 +26,7 @@ if($statusConexion){
 				case 'editar':				
 						$consulta=mysql_query("update productores set
 							productor='".$_POST['nom_productor_up']."',
-							estatus='".$_POST['estatus_c']."',
+							estatus='".$_POST['estatus_productor']."',
 							correo='".$_POST['correo_productor_up']."',
 							descripcion_productor='".$_POST['desc_productor_up']."',							
 							imagen_url='".$_POST['img_poductor_up']."'
