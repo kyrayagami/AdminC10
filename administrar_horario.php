@@ -3,12 +3,12 @@
 -->
 <?php
 include("conexion2.php");
-   $contenido="";   
+   //$contenido="";   
    $dias="";// crea metodo en conexion2
    $programa=""; //crear metodo para obtener los datos   
     if($statusConexion==true){
       //$contenido=consultaProgramas($conex);
-      $contenido=consultHorarios2($conex);
+      //$contenido=consultHorarios2($conex);
       $dias=obtenerDias($conex);
       $progra=obtenerProgramas($conex);
       $L = consult_horario_por_dia($conex,1);

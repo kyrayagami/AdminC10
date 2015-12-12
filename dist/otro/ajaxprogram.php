@@ -33,8 +33,8 @@ if($statusConexion){
 							descripcion='".$_POST['descripcion_pro']."',
 							correo='".$_POST['correo_pro']."',
 							logo='".$_POST['logo_pro']."',
-							img_slide='".$_POST['imagen_slide_pro']."',
-							descripcion_slide='".$_POST['desc_slide']."',
+							img_slider='".$_POST['imagen_slide_pro']."',
+							descripcion_slider='".$_POST['desc_slide']."',
 							imgtop_programa='".$_POST['imagen_pro']."',							
 							id_categoria='".$_POST['id_categoria']."'
 							where id_programa=".$_POST['id_programa']

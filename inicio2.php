@@ -111,7 +111,14 @@
           } 
         });
       });
-
+      $('#prueba_de_horario').click(function(){
+        $.ajax({
+          url: 'horario_administrar.php',
+          success: function(data) {
+            $('#div_dinamico').html(data);
+          } 
+        });
+      });      
     });
   </script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -252,14 +259,19 @@
           </a>
         </li> 
         --> 
+        <li>         
+          <a id="prueba_de_horario" href="#">
+            <i class="fa fa-th"></i> 
+            <span> Horario</span>
+          </a>
+        </li> 
 
         <li>         
-
           <a id="btn_horario" href="#">
             <i class="fa fa-th"></i> 
             <span> Horarios de Programas</span>
           </a>
-        </li>      
+        </li>                         
         <!--
         <li>
           <a id="boton_carga_horario" href="#">

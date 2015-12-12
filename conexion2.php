@@ -146,6 +146,22 @@ function validacionhoraHorarios($conexion,$dia,$hora_inicio,$hora_termino){
 	// obtenemos la fila y se tiene que comparar la hora de inicio del nuevo horario con la hora_termino de la fila obtenida
 	
 }
+function programacion_3sig($hora_actual,$dia,$conexion){
+$consulta=mysql_query("SELECT * 
+		FROM horario, programas
+		WHERE programas.estatus =  'ACTIVO'
+		AND horario.dia =>  DAY(NOW()) as dia
+		AND programas.id_programa = horario.id_programa
+		ORDER BY horario.hora_inicio ASC
+		limit 0,3");
+	if (mysql_num_rows($consulta)>0)
+	{
+		while ($dato=mysql_fetch_array($consulta))
+	 	{
+
+	 	}
+	}	
+}
 function consultHorarios2($conexion){	
 /*$acu=0;
 $salida='';
@@ -427,8 +443,8 @@ function consultaProgramas($conexion){
 					<td>'.$dato["correo"].'</td>
 					<td>'.$dato["categoria"].'</td>
 					<td style="display:none;">'.$dato["logo"].'</td>
-					<td style="display:none;">'.$dato["img_slide"].'</td>
-					<td style="display:none;">'.$dato["descripcion_slide"].' </td>
+					<td style="display:none;">'.$dato["img_slider"].'</td>
+					<td style="display:none;">'.$dato["descripcion_slider"].' </td>
 					<td style="display:none;">'.$dato["imgtop_programa"].'</td>
 					<td class="'.returnStatus($dato["estatus"]).'">'.$dato["estatus"].'</td>
 					<td><a class="btn btn-info">Editar</a>
