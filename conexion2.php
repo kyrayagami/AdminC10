@@ -22,7 +22,7 @@ function consultaConductores($conexion){
 		else
 		{
 			$salida='<tr id="sinDatos">
-			<td colspan="7">No hay Registros de horarioss en este dia</td>
+			<td colspan="7">No hay Registros de horarios en este dia</td>
 			</tr>';
 		}
 	//$salida = array($M,$T,$N);	
@@ -50,13 +50,13 @@ function consultaProductores($conexion){
 		else
 		{
 			$salida='<tr id="sinDatos">
-			<td colspan="7">No hay Registros de horarioss en este dia</td>
+			<td colspan="7">No hay Registros de horarios en este dia</td>
 			</tr>';
 		}
 	//$salida = array($M,$T,$N);	
 	return $salida;
 }
-function consult_horarios_por_dia($conexion,$dia){
+function consult_horario_por_dia($conexion,$dia){
 $salida='';
 $consulta=mysql_query("SELECT * 
 		FROM horarios, programas
@@ -82,13 +82,13 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros de horarioss en este dia</td>
+		<td colspan="7">No hay Registros de horarios en este dia</td>
 		</tr>';
 	}
 	//$salida = array($M,$T,$N);	
 	return $salida;
 }
-function validacionhorahorarioss($conexion,$dia,$hora_inicio,$hora_termino){
+function validacionhorahorarios($conexion,$dia,$hora_inicio,$hora_termino){
 	$hay_registro='';
 // valida que NO SE PUEDAN meter un nuevo horaro entre el rango horarios ya creado
 	$consulta=mysql_query("SELECT *  FROM horarios WHERE dia =".$dia."
@@ -162,7 +162,7 @@ $consulta=mysql_query("SELECT *
 	 	}
 	}	
 }
-function consulthorarioss2($conexion){	
+function consulthorarios2($conexion){	
 /*$acu=0;
 $salida='';
 $M='';
@@ -519,18 +519,18 @@ error_reporting(0);
 //prueba de envio  informacion
 //
 
-function consulta_horarios_prueba($conexion,$dia){
+function consulta_horario_prueba($conexion,$dia){
 $acu=0;
 $salida='';
 $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-		FROM horarioss, programas
+		FROM horarios, programas
 		WHERE programas.estatus =  'ACTIVO'
-		AND horarioss.dia =  ".$dia."
-		AND programas.id_programa = horarioss.id_programa
-		ORDER BY horarioss.dia, horarioss.hora_inicio ASC
+		AND horarios.dia =  ".$dia."
+		AND programas.id_programa = horarios.id_programa
+		ORDER BY horarios.dia, horarios.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -625,11 +625,11 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-		FROM horarioss, programas
+		FROM horarios, programas
 		WHERE programas.estatus =  'ACTIVO'
-		AND horarioss.dia =  '1'
-		AND programas.id_programa = horarioss.id_programa
-		ORDER BY horarioss.dia, horarioss.hora_inicio ASC
+		AND horarios.dia =  '1'
+		AND programas.id_programa = horarios.id_programa
+		ORDER BY horarios.dia, horarios.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{
@@ -723,11 +723,11 @@ $M='';
 $T='';
 $N='';
 $consulta=mysql_query("SELECT * 
-		FROM horarioss, programas
+		FROM horarios, programas
 		WHERE programas.estatus =  'ACTIVO'
-		AND horarioss.dia =  '2'
-		AND programas.id_programa = horarioss.id_programa
-		ORDER BY horarioss.dia, horarioss.hora_inicio ASC
+		AND horarios.dia =  '2'
+		AND programas.id_programa = horarios.id_programa
+		ORDER BY horarios.dia, horarios.hora_inicio ASC
 ");
 	if (mysql_num_rows($consulta)>0)
 	{

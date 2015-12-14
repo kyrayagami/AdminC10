@@ -20,7 +20,7 @@ if($statusConexion){
 							$hora_termino = $_POST["horaTermino"];
 							$dia= $_POST["dia"];
 							//$ContenidoHTML="hora inicio = ".$_POST["hora"]." -- hora termino ".$hora_termino;
-							$verifica = validacionhorahorarioss($conex,$dia,$hora_inicio,$hora_termino);
+							$verifica = validacionhorahorarios($conex,$dia,$hora_inicio,$hora_termino);
 							$ContenidoHTML=$verifica;
 							if($verifica=='no'){
 								$consulta=mysql_query("
@@ -70,7 +70,7 @@ if($statusConexion){
 					break;	*/		
 				case 'eliminar':
 						$consulta=mysql_query("delete from horarios 
-							where id=".$_POST['id_horarios'],$conex);
+							where id=".$_POST['id_horario'],$conex);
 						if(mysql_affected_rows()>0){
 							$mensaje="Registro Eliminado";
 							//$ContenidoHTML=consultaProgramas($conex);	
