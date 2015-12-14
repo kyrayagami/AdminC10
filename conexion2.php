@@ -520,11 +520,19 @@ error_reporting(0);
 //
 
 function consulta_horario_prueba($conexion,$dia){
+	// se modifico para obtener el dia con la fecha de mysql
 $acu=0;
 $salida='';
 $M='';
 $T='';
 $N='';
+$consulta = mysql_query("SELECT * FROM  `horarios` LEFT JOIN 
+	programas on horarios.id_programa = programas.id_programa
+	WHERE horarios.dia = ( SELECT (id_dia) FROM  dias WHERE  dia_ingles = DAYNAME( NOW( ) ) ) 
+	
+	ORDER BY horarios.hora_inicio");
+/*
+consulta anterior
 $consulta=mysql_query("SELECT * 
 		FROM horarios, programas
 		WHERE programas.estatus =  'ACTIVO'
@@ -532,6 +540,7 @@ $consulta=mysql_query("SELECT *
 		AND programas.id_programa = horarios.id_programa
 		ORDER BY horarios.dia, horarios.hora_inicio ASC
 ");
+*/
 	if (mysql_num_rows($consulta)>0)
 	{
 		while ($dato=mysql_fetch_array($consulta))
@@ -542,18 +551,28 @@ $consulta=mysql_query("SELECT *
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
 
-	 		if($hora<=115959){
+
+			$imagen='';	
+			if($dato["img_slider"]== ''){
+				$imagen= 'dist/img/tu_canal_10.jpg';
+			}else{
+				$imagen = $dato["img_slider"];
+			}
+	 				
+	 		if($hora<=115959){	 			 		
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display: none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -567,14 +586,16 @@ $consulta=mysql_query("SELECT *
 	 				$T.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
                     <br>
                     </p>
                     <p></p>
@@ -588,14 +609,16 @@ $consulta=mysql_query("SELECT *
 	 				$N.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">
                   <div class="sub-layer"> 
                     <p> 
-                    <span class="c_tit">'.$dato["nombre"].'</span>
+                    <span class="c_tit">'.$dato["nombre"].'</span>                    
                     <br> 
-                    <span class="c_tit2">'.$dato["id_programa"].'</span>
+                    <span class="c_tit2">'.$dato["tipo"].'</span>
                     <br> 
-                    <span class="c_tit2">'.$dato["descripcion_h"].'</span>
+                    <span class="c_tit2">'.$dato["descripcion"].'</span>
                     <br>
                     </p>
                     <p></p>
