@@ -249,7 +249,7 @@ ORDER BY horarios.dia, horarios.hora_inicio ASC ");
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 		return $salida;
 	}
@@ -416,7 +416,7 @@ function obtenerCategoria($conexion){
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	
@@ -633,7 +633,7 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	
@@ -664,11 +664,20 @@ $consulta=mysql_query("SELECT *
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
 
+			$imagen='';	
+			if($dato["img_slider"]== ''){
+				$imagen= 'dist/img/tu_canal_10.jpg';
+			}else{
+				$imagen = $dato["img_slider"];
+			}
+
 	 		if($hora<=115959){
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                              
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -689,7 +698,9 @@ $consulta=mysql_query("SELECT *
 	 				$T.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -710,7 +721,9 @@ $consulta=mysql_query("SELECT *
 	 				$N.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -732,7 +745,7 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	
@@ -761,12 +774,20 @@ $consulta=mysql_query("SELECT *
 	 		$la="layer".$acu."";
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
+			$imagen='';	
+			if($dato["img_slider"]== ''){
+				$imagen= 'dist/img/tu_canal_10.jpg';
+			}else{
+				$imagen = $dato["img_slider"];
+			}
 
 	 		if($hora<=115959){
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -787,7 +808,9 @@ $consulta=mysql_query("SELECT *
 	 				$T.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                              
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -808,7 +831,9 @@ $consulta=mysql_query("SELECT *
 	 				$N.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                              
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -829,7 +854,7 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	
@@ -859,12 +884,20 @@ $consulta=mysql_query("SELECT *
 	 		$la="layer".$acu."";
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
+			$imagen='';	
+			if($dato["img_slider"]== ''){
+				$imagen= 'dist/img/tu_canal_10.jpg';
+			}else{
+				$imagen = $dato["img_slider"];
+			}
 
 	 		if($hora<=115959){
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -885,7 +918,9 @@ $consulta=mysql_query("SELECT *
 	 				$T.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -906,7 +941,9 @@ $consulta=mysql_query("SELECT *
 	 				$N.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -928,7 +965,7 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	
@@ -957,12 +994,20 @@ $consulta=mysql_query("SELECT *
 	 		$la="layer".$acu."";
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
+			$imagen='';	
+			if($dato["img_slider"]== ''){
+				$imagen= 'dist/img/tu_canal_10.jpg';
+			}else{
+				$imagen = $dato["img_slider"];
+			}
 
 	 		if($hora<=115959){
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                              
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -983,7 +1028,9 @@ $consulta=mysql_query("SELECT *
 	 				$T.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1004,7 +1051,9 @@ $consulta=mysql_query("SELECT *
 	 				$N.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1025,7 +1074,7 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	
@@ -1054,12 +1103,20 @@ $consulta=mysql_query("SELECT *
 	 		$la="layer".$acu."";
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
+			$imagen='';	
+			if($dato["img_slider"]== ''){
+				$imagen= 'dist/img/tu_canal_10.jpg';
+			}else{
+				$imagen = $dato["img_slider"];
+			}
 
 	 		if($hora<=115959){
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1080,7 +1137,9 @@ $consulta=mysql_query("SELECT *
 	 				$T.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                              
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1101,7 +1160,9 @@ $consulta=mysql_query("SELECT *
 	 				$N.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                              
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1123,7 +1184,7 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	
@@ -1152,12 +1213,20 @@ $consulta=mysql_query("SELECT *
 	 		$la="layer".$acu."";
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
+			$imagen='';	
+			if($dato["img_slider"]== ''){
+				$imagen= 'dist/img/tu_canal_10.jpg';
+			}else{
+				$imagen = $dato["img_slider"];
+			}
 
 	 		if($hora<=115959){
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1178,7 +1247,9 @@ $consulta=mysql_query("SELECT *
 	 				$T.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1199,7 +1270,9 @@ $consulta=mysql_query("SELECT *
 	 				$N.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1220,7 +1293,7 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	
@@ -1250,12 +1323,20 @@ $consulta=mysql_query("SELECT *
 	 		$la="layer".$acu."";
 	 		$muestra="show('layer".$acu."')";
 			$hora=str_replace(":", "",$dato["hora_inicio"]);
+			$imagen='';	
+			if($dato["img_slider"]== ''){
+				$imagen= 'dist/img/tu_canal_10.jpg';
+			}else{
+				$imagen = $dato["img_slider"];
+			}
 
 	 		if($hora<=115959){
 	 			$M.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer"> 
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                             
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1276,7 +1357,9 @@ $consulta=mysql_query("SELECT *
 	 				$T.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">  
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                            
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1297,7 +1380,9 @@ $consulta=mysql_query("SELECT *
 	 				$N.='
 	 			<li class="estilo_lista" onclick="'.$muestra.'"> 
                 <b>'.$dato["hora_inicio"].'</b> &nbsp;&nbsp;&nbsp; '.$dato["nombre"].'  
-                <div id="'.$la.'" style="display:none;" class="layer">                                                                              
+                <div id="'.$la.'" style="display:none;" class="layer">  
+                <img src="'.$imagen.'" hspace="0" vspace="0" width="200" height="133" border="0">
+                <img src="dist/img/flecha-left.png" hspace="0" vspace="0" width="10" height="133" border="0">                                                                            
                   <div class="sub-layer"> 
                     <p> 
                     <span class="c_tit">'.$dato["nombre"].'</span>
@@ -1319,7 +1404,7 @@ $consulta=mysql_query("SELECT *
 	else
 	{
 		$salida='<tr id="sinDatos">
-		<td colspan="7">No hay Registros en la Base de Datos, Tu codigo!!</td>
+		<td colspan="7">No hay Registros en la Base de Datos,  </td>
 		</tr>';
 	}
 	$salida = array($M,$T,$N);	

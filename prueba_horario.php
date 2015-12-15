@@ -7,6 +7,7 @@ include('conexion2.php');
  //$dia_semana=$_POST['dia'];
 // echo $dia_semana;
  if($statusConexion==true){
+  header("Content-Type: text/html;charset=utf-8");
   $con_horario= consulta_horario_prueba($conex,$dia_semana);
  }
  error_reporting(0);

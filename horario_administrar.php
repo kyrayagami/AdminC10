@@ -9,8 +9,8 @@ include("conexion2.php");
     if($statusConexion==true){
       //$contenido=consultaProgramas($conex);
       $contenido=consultHorarios2($conex);
-      $dias=obtenerDias($conex);
-      $progra=obtenerProgramas($conex);
+      //$dias=obtenerDias($conex);
+      //$progra=obtenerProgramas($conex);
     }
 ?>    
     <section class="content-header">
@@ -22,6 +22,7 @@ include("conexion2.php");
         <li><a>Horario Administracion</a></li>        
       </ol>
     </section>
+<!--
     <div id="div_frm_h">
           <form id="frm_horario" name="frm_horario" action="" method="post">
             <fieldset>
@@ -35,16 +36,7 @@ include("conexion2.php");
               <br>
               <select class="form-control" id="dia" name="dia" required>
                 <option value="">Seleccione un dia</option>
-                <?php echo $dias ?>
-          <!--
-          <option>Lunes</option>
-          <option>Martes</option>
-          <option>Miercoles</option>
-          <option>Jueves</option>
-          <option>Viernes</option>
-          <option>Sabado</option>
-          <option>Domingo</option>          
-          -->
+                <?php echo $dias ?>      
               </select>              
               <label>Hora Inicio de la programacion</label><br>
               <input type="time" id="hora" name="hora" onchange="myFunction()" />
@@ -64,19 +56,19 @@ include("conexion2.php");
             </fieldset>
           </form>            
     </div>
-    <!-- Main content -->    
+      -->
     <section class="content">                                  
           <div class="col-xs-9">
-            <div>
+            <!--<div>
               <button id="agregar_h" class="btn btn-primary btn-md ">Agregar</button>
-            </div>
+            </div>-->
           </div>        
           <div class="col-xs-12"> 
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Programas</h3>              
             </div>            
-            <!-- /.box-header -->
+            
             <div class="box-body table-responsive no-padding">            
               <table id="thorario" class="table table-condensed">          
                 <thead>
