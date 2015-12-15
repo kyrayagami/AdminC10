@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminC10  | Dashboard</title>
@@ -251,14 +252,12 @@
           <span>Programa</span>          
           </a>
         </li>
-        <!--
-        <li>
-          <a id="boton_cargar" href="#">
-          <i class="fa fa-circle-o"></i> 
-          <span>Prueba ajax</span>
+ <li>         
+          <a id="btn_galeria_vista" href="vista/reporte_usuarios_pdf.php">
+           <i class="fa fa-fw fa-file-archive-o"></i> 
+          <span>Reporte Horarios</span>
           </a>
-        </li> 
-        --> 
+        </li>  
         <li>         
           <a id="prueba_de_horario" href="#">
             <i class="fa fa-th"></i> 
