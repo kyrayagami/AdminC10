@@ -253,7 +253,7 @@
           </a>
         </li>
  <li>         
-          <a id="btn_galeria_vista" href="vista/reporte_usuarios_pdf.php">
+          <a id="btn_galeria_vista" href="vista/reporte_usuarios_pdf.php" target="_blank">
            <i class="fa fa-fw fa-file-archive-o"></i> 
           <span>Reporte Horarios</span>
           </a>
