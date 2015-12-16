@@ -30,13 +30,13 @@ include("conexion2.php");
               <br>
               <select class="form-control" id="id_programa" name="id_programa" required>
                   <option value="">Seleccione un programa</option>
-                    <?php echo $progra ?>
+                    <?php //echo $progra ?>
               </select>
               <label>Dia</label>
               <br>
               <select class="form-control" id="dia" name="dia" required>
                 <option value="">Seleccione un dia</option>
-                <?php echo $dias ?>      
+                <?php //echo $dias ?>      
               </select>              
               <label>Hora Inicio de la programacion</label><br>
               <input type="time" id="hora" name="hora" onchange="myFunction()" />
@@ -90,7 +90,7 @@ include("conexion2.php");
                 <?php                
                 
                 $conta=0;                
-                while(count($contenido)>=$conta){
+                while(count($contenido)>$conta){
                   echo $contenido[$conta];
                   $conta++;
                 }

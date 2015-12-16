@@ -194,7 +194,7 @@ ORDER BY horarios.dia, horarios.hora_inicio ASC ");
 	 		$array1[$i][$j]='<td>'
 	 			.$dato["dia"].'&nbsp'.$dato["nombre"].
 	 			'<br>'.$dato["hora_inicio"].
-	 			'<br>'.$dato["duracion"].	 			
+	 			'<br>'.$dato["hora_termino"].
 	 			'</td>';
 	 		$i++;
 	 		if($i>$mayor)
@@ -258,10 +258,13 @@ ORDER BY horarios.dia, horarios.hora_inicio ASC ");
 	for ($i=0; $i < $mayor; $i++) { 
 		$array2[$i]='<tr>';
 		for ($j=0; $j < 7; $j++) {			
-			if(is_null($array1[$i][$j]))
+			if(empty($array1[$i][$j]))
+			{
 				$array2[$i].='<td></td>';
-			else
+			}
+			else{
 				$array2[$i].=$array1[$i][$j];
+			}
 			/*if(count($array1[$i])>$aux)
 				$mayor=$array1[$i][$j];
 			*/
@@ -513,7 +516,7 @@ if(!mysql_select_db('promo_vision2',$conex)){
 else{
 	mysql_query("set names 'utf-8'",$conex);
 }
-error_reporting(0);
+//error_reporting(0);
 
 //
 //prueba de envio  informacion
