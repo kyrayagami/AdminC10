@@ -47,7 +47,7 @@ $(function(){
 	//$('#loader_h2').hide();
 	$('#frm_horario').on('submit',function(event){		
 		event.preventDefault();
-		event.stopImmediatePropagation();
+		event.stopImmediatePropagation();tipo='nuevo';
 		var datos=$(this).serialize();	
 		//alert(datos);
 		$.ajax({

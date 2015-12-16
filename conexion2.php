@@ -554,7 +554,8 @@ $consulta=mysql_query("SELECT *
 
 			$imagen='';	
 			if($dato["img_slider"]== ''){
-				$imagen= 'dist/img/tu_canal_10.jpg';
+				//$imagen= 'dist/img/tu_canal_10.jpg';
+				$imagen= 'dist/img/prueba.png';				
 			}else{
 				$imagen = $dato["img_slider"];
 			}

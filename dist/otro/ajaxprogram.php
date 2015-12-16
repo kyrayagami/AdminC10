@@ -4,7 +4,7 @@ sleep(3);
 if($statusConexion){
 	$respuesta="DONE";
 	$mensaje="";
-	$ContenidoHTML="";
+	$ContenidoProgramas="";
 	$consulta="";
 	if($_POST!="" && !empty($_POST)){
 		switch ($_POST['Op']) {
@@ -17,8 +17,8 @@ if($statusConexion){
 							'ACTIVO')"
 							,$conex);
 						if(mysql_affected_rows()>0){
-							$mensaje="Registro Insertado";
-							$ContenidoHTML=consultaProgramas($conex);					
+							$ContenidoProgramas=consultaProgramas($conex);
+							$mensaje="Registro Insertado";							
 						}
 						else{
 							$respuesta="BAD";
@@ -40,8 +40,8 @@ if($statusConexion){
 							where id_programa=".$_POST['id_programa']
 							,$conex);
 						if(mysql_affected_rows()>0){
-							$mensaje="Registro Actualizado";
-							$ContenidoHTML=consultaProgramas($conex);					
+							$ContenidoProgramas=consultaProgramas($conex);
+							$mensaje="Registro Actualizado";												
 						}
 						else{
 							$respuesta="BAD";
@@ -52,8 +52,8 @@ if($statusConexion){
 						$consulta=mysql_query("delete from programas 
 							where id_programa=".$_POST['id_programa'],$conex);
 						if(mysql_affected_rows()>0){
-							$mensaje="Registro Eliminado";
-							$ContenidoHTML=consultaProgramas($conex);	
+							$ContenidoProgramas=consultaProgramas($conex);	
+							$mensaje="Registro Eliminado";							
 						}
 						else{
 							$respuesta="BAD";
@@ -67,6 +67,6 @@ if($statusConexion){
 		$mensaje="Error en los datos";
 	}		
 }
-$salidaJSON=array("respuesta" => $respuesta,"mensaje" => $mensaje,"contenido" => $ContenidoHTML);
+$salidaJSON=array("respuesta" => $respuesta,"mensaje" => $mensaje,"contenido" => $ContenidoProgramas);
 echo json_encode($salidaJSON);
 ?>
