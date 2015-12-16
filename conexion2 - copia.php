@@ -496,7 +496,7 @@ if(!mysql_select_db('promo_vision2',$conex)){
 else{
 	mysql_query("set names 'utf-8'",$conex);
 }
-error_reporting(0);
+//error_reporting(0);
 
 //
 //prueba de envio  informacion

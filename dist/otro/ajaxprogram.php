@@ -67,6 +67,6 @@ if($statusConexion){
 		$mensaje="Error en los datos";
 	}		
 }
-$salidaJSON=array("respuesta" => $respuesta,"mensaje" => $mensaje,"contenido" => $ContenidoProgramas);
+$salidaJSON=array("respuesta" => $respuesta,"contenido" => $ContenidoProgramas,"mensaje" => $mensaje);
 echo json_encode($salidaJSON);
 ?>

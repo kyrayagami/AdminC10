@@ -52,13 +52,13 @@ include("conexion2.php");
               <input type="email" id="correo_pro" name="correo_pro" placeholder="Correo" required />
               <br>              
               <label>Logo del programa (link) </label><br>
-              <input type="text" id="logo_pro" name="logo_pro" placeholder="Logo del programa" required /><br>
+              <input type="text" id="logo_pro" name="logo_pro" placeholder="Logo del programa"/><br>
               <label>Slide del programa (link)</label><br>
-              <input type="text" id="imagen_slide_pro" name="imagen_slide_pro" placeholder="Slide del programa" required /><br>
+              <input type="text" id="imagen_slide_pro" name="imagen_slide_pro" placeholder="Slide del programa" /><br>
               <label>Descripcion Slide</label><br>
-              <input maxlength="50" type="text" id="desc_slide" name="desc_slide" placeholder="Descripcion Slider" required /><br>              
+              <input maxlength="50" type="text" id="desc_slide" name="desc_slide" placeholder="Descripcion Slider"  /><br>              
               <label>Imagen del programa (link)</label><br>
-              <input type="text" id="imagen_pro" name="imagen_pro" placeholder="Imagen del programa" required /><br>
+              <input type="text" id="imagen_pro" name="imagen_pro" placeholder="Imagen del programa" /><br>
               <label>Categoria</label><br>         
               <select name="id_categoria" id="id_categoria" required>
                     <option value="">Seleccione una Categoria</option>
