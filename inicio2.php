@@ -13,6 +13,7 @@
 <link href="Archivos/css.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="Archivos/style_002.css">
 <link rel="stylesheet" href="Archivos/bjqs.css">
+
 <!-- load jQuery and the plugin -->
 <link href="Archivos/css_002.css" rel="stylesheet" type="text/css"> 
 <!-- demo.css contains additional styles used to set up this demo page - not required for the slider --> 
@@ -141,7 +142,7 @@
       <span class="logo-lg"><b>Admin</b>C10</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top" role="navigation">
+  <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
@@ -176,6 +177,7 @@
           </li>          
         </ul>
       </div>
+
     </nav>
   </header>
   <!-- menu de arriba-->
